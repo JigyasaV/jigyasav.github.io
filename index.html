@@ -1,0 +1,517 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Jigyasa Verma — RNA Biology · AI Model Evaluation</title>
+    <meta name="description" content="Jigyasa Verma — Postdoctoral researcher at Stanford University working at the intersection of RNA biology, next-generation sequencing, and AI.">
+    <style>
+        /* ---- Reset & Base ---- */
+        *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+        :root {
+            --text: #1a1a2e;
+            --text-secondary: #4a4a68;
+            --accent: #2563eb;
+            --accent-hover: #1d4ed8;
+            --bg: #ffffff;
+            --bg-alt: #f8f9fc;
+            --border: #e2e4ea;
+            --max-width: 780px;
+        }
+
+        html { scroll-behavior: smooth; }
+
+        body {
+            font-family: 'Segoe UI', system-ui, -apple-system, sans-serif;
+            color: var(--text);
+            background: var(--bg);
+            line-height: 1.65;
+            font-size: 16px;
+        }
+
+        a { color: var(--accent); text-decoration: none; }
+        a:hover { color: var(--accent-hover); text-decoration: underline; }
+
+        /* ---- Navigation ---- */
+        nav {
+            position: sticky;
+            top: 0;
+            background: rgba(255,255,255,0.95);
+            backdrop-filter: blur(8px);
+            border-bottom: 1px solid var(--border);
+            z-index: 100;
+        }
+        nav .nav-inner {
+            max-width: var(--max-width);
+            margin: 0 auto;
+            padding: 0.75rem 1.5rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        nav .nav-name {
+            font-weight: 700;
+            font-size: 1.05rem;
+            color: var(--text);
+        }
+        nav .nav-links { display: flex; gap: 1.5rem; }
+        nav .nav-links a {
+            color: var(--text-secondary);
+            font-size: 0.9rem;
+            font-weight: 500;
+        }
+        nav .nav-links a:hover { color: var(--accent); text-decoration: none; }
+
+        /* ---- Sections ---- */
+        section {
+            max-width: var(--max-width);
+            margin: 0 auto;
+            padding: 3rem 1.5rem 1rem;
+        }
+
+        .section-title {
+            font-size: 1.15rem;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 0.06em;
+            color: var(--text);
+            margin-bottom: 1.25rem;
+            padding-bottom: 0.5rem;
+            border-bottom: 2px solid var(--accent);
+            display: inline-block;
+        }
+
+        /* ---- Hero ---- */
+        .hero {
+            padding: 5rem 1.5rem 2.5rem;
+            text-align: center;
+        }
+        .hero h1 {
+            font-size: 2.5rem;
+            font-weight: 800;
+            letter-spacing: -0.02em;
+            margin-bottom: 0.5rem;
+        }
+        .hero .tagline {
+            font-size: 1.1rem;
+            color: var(--text-secondary);
+            margin-bottom: 1.5rem;
+            font-weight: 400;
+        }
+        .hero .links {
+            display: flex;
+            justify-content: center;
+            gap: 1rem;
+            flex-wrap: wrap;
+        }
+        .hero .links a {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.35rem;
+            padding: 0.45rem 1rem;
+            border: 1px solid var(--border);
+            border-radius: 6px;
+            font-size: 0.9rem;
+            font-weight: 500;
+            color: var(--text-secondary);
+            transition: all 0.15s;
+        }
+        .hero .links a:hover {
+            border-color: var(--accent);
+            color: var(--accent);
+            text-decoration: none;
+        }
+        .hero .links a svg { width: 16px; height: 16px; }
+
+        /* ---- About ---- */
+        .about p {
+            color: var(--text-secondary);
+            font-size: 1rem;
+            max-width: 700px;
+        }
+
+        /* ---- Project cards ---- */
+        .project {
+            background: var(--bg-alt);
+            border: 1px solid var(--border);
+            border-radius: 8px;
+            padding: 1.25rem 1.5rem;
+            margin-bottom: 1rem;
+        }
+        .project h3 {
+            font-size: 1rem;
+            font-weight: 700;
+            margin-bottom: 0.35rem;
+        }
+        .project p {
+            font-size: 0.92rem;
+            color: var(--text-secondary);
+        }
+        .project .tag {
+            display: inline-block;
+            font-size: 0.75rem;
+            font-weight: 600;
+            padding: 0.15rem 0.55rem;
+            border-radius: 4px;
+            margin-top: 0.5rem;
+            margin-right: 0.3rem;
+        }
+        .tag-prep { background: #dbeafe; color: #1e40af; }
+        .tag-review { background: #fef3c7; color: #92400e; }
+
+        /* ---- Experience ---- */
+        .exp-item { margin-bottom: 1.5rem; }
+        .exp-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: baseline;
+            flex-wrap: wrap;
+            gap: 0.25rem;
+        }
+        .exp-header h3 { font-size: 1rem; font-weight: 700; }
+        .exp-header .dates {
+            font-size: 0.85rem;
+            color: var(--text-secondary);
+            white-space: nowrap;
+        }
+        .exp-org {
+            font-size: 0.92rem;
+            color: var(--text-secondary);
+            font-style: italic;
+            margin-bottom: 0.4rem;
+        }
+        .exp-item ul {
+            margin-left: 1.25rem;
+            margin-top: 0.3rem;
+        }
+        .exp-item li {
+            font-size: 0.92rem;
+            color: var(--text-secondary);
+            margin-bottom: 0.3rem;
+        }
+
+        /* ---- Publications ---- */
+        .pub { margin-bottom: 0.75rem; font-size: 0.92rem; }
+        .pub .status {
+            display: inline-block;
+            font-size: 0.72rem;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 0.04em;
+            padding: 0.1rem 0.45rem;
+            border-radius: 3px;
+            margin-right: 0.3rem;
+            vertical-align: middle;
+        }
+        .status-published { background: #d1fae5; color: #065f46; }
+        .status-review { background: #fef3c7; color: #92400e; }
+        .status-prep { background: #e0e7ff; color: #3730a3; }
+
+        /* ---- Skills ---- */
+        .skill-group { margin-bottom: 0.75rem; }
+        .skill-group h3 {
+            font-size: 0.92rem;
+            font-weight: 700;
+            margin-bottom: 0.2rem;
+        }
+        .skill-group p {
+            font-size: 0.88rem;
+            color: var(--text-secondary);
+        }
+
+        /* ---- Awards ---- */
+        .award {
+            display: flex;
+            justify-content: space-between;
+            align-items: baseline;
+            flex-wrap: wrap;
+            margin-bottom: 0.4rem;
+            font-size: 0.92rem;
+        }
+        .award .name { font-weight: 600; }
+        .award .year { color: var(--text-secondary); font-size: 0.85rem; }
+
+        /* ---- Education ---- */
+        .edu {
+            display: flex;
+            justify-content: space-between;
+            align-items: baseline;
+            flex-wrap: wrap;
+            margin-bottom: 0.5rem;
+        }
+        .edu .school { font-weight: 600; font-size: 0.95rem; }
+        .edu .degree { font-size: 0.88rem; color: var(--text-secondary); }
+        .edu .years { font-size: 0.85rem; color: var(--text-secondary); white-space: nowrap; }
+
+        /* ---- Footer ---- */
+        footer {
+            max-width: var(--max-width);
+            margin: 2rem auto 0;
+            padding: 1.5rem;
+            border-top: 1px solid var(--border);
+            text-align: center;
+            font-size: 0.85rem;
+            color: var(--text-secondary);
+        }
+
+        /* ---- Responsive ---- */
+        @media (max-width: 600px) {
+            .hero h1 { font-size: 1.8rem; }
+            .hero .tagline { font-size: 0.95rem; }
+            nav .nav-links { gap: 0.75rem; }
+            nav .nav-links a { font-size: 0.8rem; }
+            .exp-header { flex-direction: column; }
+            section { padding: 2rem 1rem 0.5rem; }
+        }
+    </style>
+</head>
+<body>
+
+<!-- Navigation -->
+<nav>
+    <div class="nav-inner">
+        <span class="nav-name">Jigyasa Verma</span>
+        <div class="nav-links">
+            <a href="#about">About</a>
+            <a href="#research">Research</a>
+            <a href="#publications">Publications</a>
+            <a href="#skills">Skills</a>
+            <a href="#awards">Awards</a>
+        </div>
+    </div>
+</nav>
+
+<!-- Hero -->
+<section class="hero" id="top">
+    <h1>Jigyasa Verma</h1>
+    <p class="tagline">AI Model Evaluation &middot; Experimental Design for Machine Learning &middot; RNA Structure &amp; Translation</p>
+    <div class="links">
+        <a href="mailto:jigyasav@stanford.edu">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="4" width="20" height="16" rx="2"/><path d="m22 7-8.97 5.7a1.94 1.94 0 0 1-2.06 0L2 7"/></svg>
+            Email
+        </a>
+        <a href="https://scholar.google.co.in/citations?user=hKGzqjgAAAAJ&hl=en&oi=ao" target="_blank">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M2 3h6a4 4 0 0 1 4 4v14a3 3 0 0 0-3-3H2z"/><path d="M22 3h-6a4 4 0 0 0-4 4v14a3 3 0 0 1 3-3h7z"/></svg>
+            Scholar
+        </a>
+        <a href="https://github.com/JigyasaV" target="_blank">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M15 22v-4a4.8 4.8 0 0 0-1-3.5c3 0 6-2 6-5.5.08-1.25-.27-2.48-1-3.5.28-1.15.28-2.35 0-3.5 0 0-1 0-3 1.5-2.64-.5-5.36-.5-8 0C6 2 5 2 5 2c-.3 1.15-.3 2.35 0 3.5A5.4 5.4 0 0 0 4 9c0 3.5 3 5.5 6 5.5-.39.49-.68 1.05-.85 1.65S8.93 17.38 9 18v4"/><path d="M9 18c-4.51 2-5-2-7-2"/></svg>
+            GitHub
+        </a>
+        <a href="https://orcid.org/0000-0002-9286-0299" target="_blank">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><path d="M12 8v8"/><path d="M8 12h8"/></svg>
+            ORCID
+        </a>
+        <a href="https://www.linkedin.com/in/jigyasa-verma/" target="_blank">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"/><rect x="2" y="9" width="4" height="12"/><circle cx="4" cy="4" r="2"/></svg>
+            LinkedIn
+        </a>
+    </div>
+</section>
+
+<!-- About -->
+<section class="about" id="about">
+    <h2 class="section-title">About</h2>
+    <p>I work at the intersection of RNA biology, next-generation sequencing, and AI. I design experiments that generate ground-truth data for building and validating biological models, and I build systematic benchmarks that expose where those models fail.</p>
+    <br>
+    <p>At Stanford (Das Lab), I developed FAST-MaP, a rapid Nanopore-based pipeline for RNA chemical mapping released as a public web server, and transferred the technology to <a href="https://ai.hhmi.org/" target="_blank">AI@HHMI</a> to unlock training data for RNA structure models. I surveyed 13 RNA structure and translation-efficiency models spanning three architectural classes, designed biological experiments that isolated a specific structural mechanism, and demonstrated that no current model captures it.</p>
+</section>
+
+<!-- Selected Research -->
+<section id="research">
+    <h2 class="section-title">Selected Research</h2>
+
+    <div class="project">
+        <h3>AI Model Benchmarking</h3>
+        <p>Designed experiments testing 13 RNA/translation models across 3 architectural classes (thermodynamic, deep learning, sequence-to-expression); identified a structural repression mechanism that every tested model fails to predict.</p>
+        <span class="tag tag-prep">Manuscript in preparation</span>
+    </div>
+
+    <div class="project">
+        <h3>FAST-MaP</h3>
+        <p>Developed a Nanopore-based RNA chemical mapping protocol that eliminates the need for sequencing infrastructure. Public web server deployed. Technology transferred to AI@HHMI for large-scale training data production. Invention disclosure under review by Stanford OTL.</p>
+        <span class="tag tag-prep">Target: Nature Protocols</span>
+    </div>
+
+    <div class="project">
+        <h3>PAN2&ndash;PAN3 &amp; Mitotic Regulation</h3>
+        <p>First-author discovery that the PAN2-PAN3 deadenylase activity is selectively required for mitotic robustness under microtubule stress; demonstrated mechanism from yeast to human cells.</p>
+        <span class="tag tag-review">Under review: iScience (Cell Press)</span>
+    </div>
+</section>
+
+<!-- Publications -->
+<section id="publications">
+    <h2 class="section-title">Publications</h2>
+
+    <div class="pub">
+        <span class="status status-prep">In Prep</span>
+        <strong>Verma J.</strong> et al. FAST-MaP: A Rapid and Accessible Protocol for Chemical Mapping of RNA Structures Using Primer-less Sequencing. Target: <em>Nature Protocols</em>.
+    </div>
+
+    <div class="pub">
+        <span class="status status-prep">In Prep</span>
+        <strong>Verma J.</strong> et al. Systematic evaluation of RNA structure and translation-efficiency models reveals a structural repression mechanism invisible to current AI.
+    </div>
+
+    <div class="pub">
+        <span class="status status-prep">In Prep</span>
+        Blair H.M., <strong>Verma J.</strong>, Kladwang W., Das R. Structure profiling of RNA beyond the transcriptome scale with <code>cmuts</code>.
+    </div>
+
+    <div class="pub">
+        <span class="status status-review">In Review</span>
+        <strong>Verma J.</strong> et al. PAN2-PAN3 deadenylase activity is selectively required for mitotic robustness under microtubule stress. <em>iScience</em> (Cell Press), 2026. <a href="https://www.biorxiv.org/content/10.1101/2024.05.01.591760v3" target="_blank">Preprint</a>
+    </div>
+
+    <div class="pub">
+        <span class="status status-published">Published</span>
+        Reza M.H., Aggarwal R.*, <strong>Verma J.</strong>* et al. Atg11 is required for high-fidelity chromosome segregation. <a href="https://doi.org/10.1371/journal.pbio.3003069" target="_blank"><em>PLOS Biology</em></a> (2025). *equal contribution
+    </div>
+</section>
+
+<!-- Experience -->
+<section id="experience">
+    <h2 class="section-title">Experience</h2>
+
+    <div class="exp-item">
+        <div class="exp-header">
+            <h3>Postdoctoral Researcher</h3>
+            <span class="dates">Mar 2025 &ndash; Present</span>
+        </div>
+        <div class="exp-org">Stanford University, Das Lab &mdash; California, USA</div>
+        <ul>
+            <li>Benchmarked 13 RNA structure and translation-efficiency models spanning thermodynamic, deep-learning, and sequence-to-expression architectures against experimental data from engineered mRNA cage constructs, revealing a structural repression mechanism no tested model predicts.</li>
+            <li>Developed FAST-MaP, a rapid Nanopore-based RNA chemical mapping protocol with a public web server. Validated on lncRNA ROOL-120, where SHAPE data revealed a structural inconsistency undetected by cryo-EM.</li>
+            <li>Transferred FAST-MaP technology to AI@HHMI, enabling large-scale training data production for RNA structure foundation models.</li>
+            <li>Validated <code>cmuts</code>, a quantitative SHAPE data analysis pipeline, through RNA chemical probing experiments; collaborated to deploy a public web server.</li>
+        </ul>
+    </div>
+
+    <div class="exp-item">
+        <div class="exp-header">
+            <h3>Postdoctoral Researcher</h3>
+            <span class="dates">Jan 2024 &ndash; Aug 2024</span>
+        </div>
+        <div class="exp-org">University of British Columbia, Loewen and Roskelley Labs &mdash; Vancouver, Canada</div>
+        <ul>
+            <li>Developed reproducible quantitative image analysis pipelines for high-throughput cellular phenotyping, translating complex cellular phenotypes into computable metrics.</li>
+        </ul>
+    </div>
+
+    <div class="exp-item">
+        <div class="exp-header">
+            <h3>Graduate Research Assistant</h3>
+            <span class="dates">Sep 2017 &ndash; Dec 2023</span>
+        </div>
+        <div class="exp-org">University of British Columbia &mdash; Vancouver, Canada</div>
+        <ul>
+            <li>Discovered conserved roles of the PAN deadenylase complex in ensuring mitotic robustness under microtubule stress, integrating genetic screens, RNA-seq, live-cell imaging, and perturbation assays across yeast and mammalian systems.</li>
+            <li>Demonstrated that Pho85-dependent phosphorylation regulates Pan3 stability, establishing a cyclin-dependent kinase&ndash;deadenylase regulatory axis.</li>
+        </ul>
+    </div>
+
+    <div class="exp-item">
+        <div class="exp-header">
+            <h3>Graduate Student Researcher</h3>
+            <span class="dates">Aug 2014 &ndash; May 2017</span>
+        </div>
+        <div class="exp-org">Jawaharlal Nehru Centre for Advanced Scientific Research &mdash; Bangalore, India</div>
+        <ul>
+            <li>Identified a role for autophagy-related protein Atg11 in chromosome segregation fidelity using genetic screens, high-throughput imaging, and transcriptional assays in budding yeast.</li>
+        </ul>
+    </div>
+</section>
+
+<!-- Technical Expertise -->
+<section id="skills">
+    <h2 class="section-title">Technical Expertise</h2>
+
+    <div class="skill-group">
+        <h3>AI/ML Evaluation &amp; Benchmarking</h3>
+        <p>Systematic evaluation of RNA structure prediction models (EternaFold, RibonanzaNet, Orthrus, Optimus 5-Prime, RiboNN, UTR-LM, AIDO.RNA, Saluki, Borzoi); benchmark design across thermodynamic, deep-learning, and sequence-to-expression architectures</p>
+    </div>
+    <div class="skill-group">
+        <h3>Data Analysis &amp; Computation</h3>
+        <p>Python (pandas, NumPy, SciPy, matplotlib, scikit-image), R/Bioconductor, SHAPE data analysis (ShapeMapper2, cmuts), quantitative image analysis (ImageJ, CellProfiler, ZEN), GitHub</p>
+    </div>
+    <div class="skill-group">
+        <h3>Sequencing &amp; Genomics</h3>
+        <p>Oxford Nanopore long-read RNA sequencing (chemically modified base detection), Illumina sequencing, library preparation, RNA-seq</p>
+    </div>
+    <div class="skill-group">
+        <h3>RNA Biology &amp; Structure Probing</h3>
+        <p>In vitro and in vivo chemical probing (2A3, DMS, SHAPE-MaP), RNA secondary structure mapping, IVT, protocol development, mRNA translation efficiency assays</p>
+    </div>
+    <div class="skill-group">
+        <h3>Molecular &amp; Cellular Biology</h3>
+        <p>CRISPR/Cas9, shRNA/siRNA, RT-qPCR, cloning, mutagenesis, flow cytometry, mammalian cell culture (HEK293A), yeast genetics (SGA screens)</p>
+    </div>
+</section>
+
+<!-- Tools -->
+<section>
+    <h2 class="section-title">Tools &amp; Software</h2>
+    <div class="skill-group">
+        <h3>FAST-MaP Web Server <span style="font-weight: 400; color: var(--text-secondary);">(developer)</span></h3>
+        <p>Nanopore-based RNA chemical mapping pipeline. Licensing in progress; available upon request.</p>
+    </div>
+    <div class="skill-group">
+        <h3>cmuts Web Server <span style="font-weight: 400; color: var(--text-secondary);">(contributor)</span></h3>
+        <p>Quantitative SHAPE data analysis &mdash; <a href="https://huggingface.co/spaces/hamishmilsonblair/cmuts" target="_blank">cmuts on HuggingFace</a></p>
+    </div>
+</section>
+
+<!-- Awards -->
+<section id="awards">
+    <h2 class="section-title">Awards</h2>
+    <div class="award"><span class="name">mRNA Research Advancement Award, CELLSCRIPT&trade;</span> <span class="year">2026</span></div>
+    <div class="award"><span class="name">mRNA Innovators Award, Eclipsebio</span> <span class="year">2025</span></div>
+    <div class="award"><span class="name">President's Academic Excellence Initiative PhD Award, UBC</span> <span class="year">2021&ndash;2023</span></div>
+    <div class="award"><span class="name">Raymond A. Pederson Prize in Physiology, UBC</span> <span class="year">2020</span></div>
+    <div class="award"><span class="name">Junior Research Fellowship (CSIR-NET), Government of India</span> <span class="year">2017</span></div>
+</section>
+
+<!-- Teaching -->
+<section>
+    <h2 class="section-title">Teaching &amp; Service</h2>
+    <div class="award"><span class="name">Peer Reviewer: <em>Science</em> (AAAS), <em>Nature Communications</em></span> <span class="year">2025</span></div>
+    <div class="award"><span class="name">Teaching Assistant, CELL 501 (Graduate-level), UBC</span> <span class="year">2021&ndash;2023</span></div>
+</section>
+
+<!-- Education -->
+<section id="education">
+    <h2 class="section-title">Education</h2>
+
+    <div class="edu">
+        <div>
+            <div class="school">University of British Columbia</div>
+            <div class="degree">PhD, Cell and Developmental Biology</div>
+        </div>
+        <span class="years">2017&ndash;2023</span>
+    </div>
+
+    <div class="edu">
+        <div>
+            <div class="school">Jawaharlal Nehru Centre for Advanced Scientific Research</div>
+            <div class="degree">MS, Molecular Biology and Genetics</div>
+        </div>
+        <span class="years">2014&ndash;2017</span>
+    </div>
+
+    <div class="edu">
+        <div>
+            <div class="school">University of Delhi</div>
+            <div class="degree">BSc, Microbiology</div>
+        </div>
+        <span class="years">2011&ndash;2014</span>
+    </div>
+</section>
+
+<footer>
+    &copy; 2026 Jigyasa Verma &middot; Stanford University
+</footer>
+
+</body>
+</html>
