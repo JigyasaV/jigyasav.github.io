@@ -1,0 +1,239 @@
+%-------------------------
+% Resume in Latex
+% Author: Gennadii Chursov
+% Based off of: https://github.com/sb2nov/resume and https://www.overleaf.com/latex/templates/jakes-resume/syzfjbzwjncs
+% License: MIT
+%------------------------
+% General-purpose CV — not tailored to a specific posting.
+% Last updated: September 2026
+%------------------------
+
+\documentclass[letterpaper,11pt]{article}
+
+\usepackage{latexsym}
+\usepackage[empty]{fullpage}
+\usepackage{titlesec}
+\usepackage{marvosym}
+\usepackage[usenames,dvipsnames]{color}
+\usepackage{verbatim}
+\usepackage{enumitem}
+\usepackage[hidelinks]{hyperref}
+\hypersetup{
+    colorlinks=true,
+    linkcolor=blue,
+    urlcolor=blue,
+}
+\usepackage{fancyhdr}
+\usepackage[english]{babel}
+\usepackage{tabularx}
+\input{glyphtounicode}
+
+
+%----------FONT OPTIONS----------
+% sans-serif
+% \usepackage[sfdefault]{FiraSans}
+% \usepackage[sfdefault]{roboto}
+% \usepackage[sfdefault]{noto-sans}
+% \usepackage[default]{sourcesanspro}
+
+% serif
+% \usepackage{CormorantGaramond}
+% \usepackage{charter}
+
+
+\pagestyle{fancy}
+\fancyhf{} % clear all header and footer fields
+\fancyfoot{}
+\renewcommand{\headrulewidth}{0pt}
+\renewcommand{\footrulewidth}{0pt}
+
+% Margins: standard resume page (geometry overrides fullpage)
+\usepackage[letterpaper,top=0.8in,bottom=0.8in,left=0.7in,right=0.7in]{geometry}
+
+\urlstyle{same}
+
+\raggedbottom
+\raggedright
+\setlength{\tabcolsep}{0in}
+
+% ---- Breathing room ----
+\linespread{1.06}
+\setlength{\parskip}{2pt}
+\setlist[itemize]{itemsep=3.5pt, parsep=0pt, topsep=4pt}
+
+% Sections formatting
+\titleformat{\section}{
+  \vspace{6pt}\scshape\raggedright\large
+}{}{0em}{}[\color{black}\titlerule \vspace{2pt}]
+
+% Ensure that generated PDF is machine readable/ATS parsable
+\pdfgentounicode=1
+
+%-------------------------
+% Custom commands
+\newcommand{\resumeItem}[1]{
+  \item\small{
+    {#1 \vspace{1pt}}
+  }
+}
+
+\newcommand{\resumeSubheading}[4]{
+  \vspace{4pt}\item
+    \begin{tabular*}{0.97\textwidth}[t]{l@{\extracolsep{\fill}}r}
+      \textbf{#1} & #2 \\
+      \textit{\small#3} & \textit{\small #4} \\
+    \end{tabular*}\vspace{-4pt}
+}
+
+\newcommand{\resumeSubSubheading}[2]{
+    \item
+    \begin{tabular*}{0.97\textwidth}{l@{\extracolsep{\fill}}r}
+      \textit{\small#1} & \textit{\small #2} \\
+    \end{tabular*}\vspace{-7pt}
+}
+
+\newcommand{\resumeProjectHeading}[2]{
+    \item
+    \begin{tabular*}{0.97\textwidth}{l@{\extracolsep{\fill}}r}
+      \small#1 & #2 \\
+    \end{tabular*}\vspace{-7pt}
+}
+
+\newcommand{\resumeSubItem}[1]{\resumeItem{#1}\vspace{-4pt}}
+
+\renewcommand\labelitemii{$\vcenter{\hbox{\tiny$\bullet$}}$}
+
+\newcommand{\resumeSubHeadingListStart}{\begin{itemize}[leftmargin=0.15in, label={}]}
+\newcommand{\resumeSubHeadingListEnd}{\end{itemize}}
+\newcommand{\resumeItemListStart}{\begin{itemize}}
+\newcommand{\resumeItemListEnd}{\end{itemize}\vspace{-2pt}}
+
+%-------------------------------------------
+%%%%%%  RESUME STARTS HERE  %%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\begin{document}
+
+%----------HEADING----------
+\begin{center}
+    \textbf{\Huge \scshape Jigyasa Verma} \\ \vspace{3pt}
+    {\small RNA Biology $\cdot$ Method Development $\cdot$ Experimental Ground Truth for AI Models} \\ \vspace{3pt}
+
+    \href{mailto:jigyasav@stanford.edu}{Email} $|$
+    \href{https://orcid.org/0000-0002-9286-0299}{ORCID} $|$
+    \href{https://scholar.google.co.in/citations?user=hKGzqjgAAAAJ&hl=en&oi=ao}{Scholar} $|$
+    \href{https://www.linkedin.com/in/jigyasa-verma/}{LinkedIn} $|$
+    \href{https://github.com/JigyasaV}{GitHub} $|$
+\href{https://jigyasav.github.io/}{Website}
+\end{center}
+
+%-----------PROFILE-----------
+\section*{Summary}
+I'm an experimentalist who builds methods. RNA structure and function is my deep specialty, and I work fluently across \textit{in vitro}, microbial, and mammalian systems, from molecular biology and biochemistry to imaging and high-throughput assays.
+
+I design experiments that generate large, structured, analysis-ready datasets, and I run them as a closed loop: give a model a real design problem, build and measure its best candidates at the bench, and feed the results back into the next round. That loop is also how I find where models break. My goal is to build biological methods that generate data designed from the start to train AI models, and to use those models to engineer the biomolecules and therapeutics of the future.
+
+%-----------EXPERIENCE-----------
+\section{Research Experience}
+  \resumeSubHeadingListStart
+
+   \resumeSubheading
+    {Postdoctoral Researcher}{Mar 2025 -- Present}
+    {Stanford University, Das Lab}{California, USA}
+    \resumeItemListStart
+        \resumeItem{\textbf{Invented FAST-MaP}, a rapid, primer-less RNA chemical-mapping pipeline that takes a DNA template to per-nucleotide reactivity in under a week ($\sim$25--30 h hands-on). It runs entirely on commercial gene-synthesis and sequencing services with a public \href{https://huggingface.co/spaces/daslab-stanford/cmuts}{web-based analysis server}, requiring no in-house NGS infrastructure and no custom bioinformatics. This makes quantitative RNA structure questions answerable in any lab worldwide (\textit{Nature Protocols}, in review).}
+        \resumeItem{\textbf{Ran the technical transfer of FAST-MaP} to \href{https://www.hhmi.org/research/janelia/AI}{AI@HHMI}, where it is now used to generate structure-probing data for training RNA models on long RNAs.}
+        \resumeItem{\textbf{Closed the experiment-to-model loop for de novo RNA design} (\textit{Science}, 2026): chemical-mapping readouts produced by my method guided successive rounds of AI-designed pseudoknots, feeding structural ground truth back to the computational team between design cycles.}
+        \resumeItem{\textbf{Built a head-to-head benchmark of frontier LLMs against expert human designers}: frontier language models and \href{https://eternagame.org/labs/16496126}{Eterna} players receive the same pseudoknot-design challenge, and every design is scored experimentally by chemical mapping rather than against another model, yielding an evaluation set and training data grounded in physical measurement (ongoing).}
+        \resumeItem{\textbf{Designed tunable mRNA constructs} to test how long-range RNA architecture controls cap-dependent translation: a 3$'$ element that base-pairs with the 5$'$UTR represses initiation $\sim$8--9-fold by NanoLuc reporter assay, while a composition-matched scramble control shows only $\sim$1.5-fold. No translation-efficiency model predicts this sequence-specific effect (manuscript in prep).}
+        \resumeItem{\textbf{Validated \href{https://doi.org/10.5281/zenodo.22805311}{\texttt{cmuts}}}, a mutational-profiling pipeline scaling structure profiling beyond the transcriptome, using \textit{in vitro} chemical probing (2A3, DMS) (manuscript in prep).}
+    \resumeItemListEnd
+
+    \resumeSubheading
+      {Postdoctoral Researcher}{Jan 2024 -- Aug 2024}
+      {University of British Columbia, Loewen and Roskelley Labs}{Vancouver, Canada}
+      \resumeItemListStart
+        \resumeItem{\textbf{Built reproducible quantitative image-analysis pipelines} (segmentation, feature extraction, statistics) for high-throughput cellular phenotyping, turning noisy microscopy into structured, analysis-ready metrics for quantitative comparison across conditions.}
+      \resumeItemListEnd
+
+    \resumeSubheading
+      {Graduate Research Assistant}{Sep 2017 -- Dec 2023}
+      {University of British Columbia, Loewen and Roskelley Labs}{Vancouver, Canada}
+      \resumeItemListStart
+        \resumeItem{\textbf{Discovered a conserved role for the PAN deadenylase complex} in maintaining mitotic robustness under microtubule stress, integrating genome-wide genetic screens ($\sim$4,800 strains across two conditions), RNA-seq, live-cell imaging, and perturbation assays across yeast and mammalian (HEK293A) systems (\textit{Genetics}, in review).}
+        \resumeItem{\textbf{Established that Pho85-dependent phosphorylation of Pan3} links cell-cycle signaling to mRNA turnover, applying extensive molecular cloning, mutagenesis, and plasmid construction.}
+        \resumeItem{\textbf{Trained and mentored undergraduate researchers} in cloning, yeast genetics, and imaging, supervising their day-to-day experiments.}
+      \resumeItemListEnd
+
+    \resumeSubheading
+      {Graduate Student Researcher}{Aug 2014 -- May 2017}
+      {Jawaharlal Nehru Centre for Advanced Scientific Research}{Bangalore, India}
+      \resumeItemListStart
+        \resumeItem{\textbf{Identified a role for the autophagy protein Atg11} in chromosome-segregation fidelity using growth-based genetic screens, high-throughput imaging, and transcriptional assays in budding yeast (\textit{PLOS Biology}, 2025).}
+      \resumeItemListEnd
+  \resumeSubHeadingListEnd
+
+  %-----------Publications-----------
+\section{Publications}
+\begin{itemize}[leftmargin=0.15in, label={}]
+    \small{
+    \item \textbf{[Published]} Townley J.*, Kladwang W.*, \dots\ \textbf{Verma J.}, \dots\ Eterna Participants, Das R. De novo design of RNA pseudoknots with deep learning. \href{https://www.science.org/doi/10.1126/science.aeg6829}{\textit{Science}} (2026). *equal contribution
+    \item \textbf{[Published]} Reza M.H., Aggarwal R.*, \textbf{Verma J.}* et al. Atg11 is required for high-fidelity chromosome segregation. \href{https://doi.org/10.1371/journal.pbio.3003069}{\textit{PLOS Biology}} (2025). *equal contribution
+    \item \textbf{[In review]} \textbf{Verma J.} et al. FAST-MaP: A Rapid and Accessible Protocol for Chemical Mapping of RNA Structures Using Primer-less Sequencing. \textit{Nature Protocols} (commissioned), 2026. \href{https://www.biorxiv.org/content/10.64898/2026.09.22.753544v1}{Preprint}
+    \item \textbf{[In review]} \textbf{Verma J.} et al. PAN2-PAN3 deadenylase activity is selectively required for mitotic robustness under microtubule stress. \textit{Genetics}, 2026. \href{https://www.biorxiv.org/content/10.1101/2024.05.01.591760v3}{Preprint}
+    \item \textbf{[In prep]} Blair H.M., \textbf{Verma J.}, Kladwang W., Das R. Structure profiling of RNA beyond the transcriptome scale with \texttt{cmuts}.
+}
+\end{itemize}
+
+%-----------TECHNICAL EXPERTISE-----------
+\section{Technical Expertise}
+\begin{itemize}[leftmargin=0.15in, label={}]
+  \small{
+    \item \textbf{AI \& ML Model Evaluation}{: RNA structure-prediction models (EternaFold, RibonanzaNet, RNAfold); RNA foundation models (AIDO.RNA, CodonBERT); mRNA translation-efficiency models (Optimus 5-Prime, RiboNN, UTR-LM); mRNA stability and ribosome-profiling models (Saluki, RiboTIE); frontier LLM evaluation on biological design and reasoning tasks; designing benchmarks scored against experimental ground truth rather than against model predictions}
+    \item \textbf{Method Development}{: FAST-MaP (inventor; public web server; Stanford OTL invention disclosure under review); assay design; probe/reagent optimization}
+    \item \textbf{Computational Analysis}{: Python (pandas, NumPy, SciPy, matplotlib, scikit-image); R/Bioconductor; SHAPE data analysis (ShapeMapper2, \texttt{cmuts}); biological databases (UniProt, GenBank, RNAcentral, Rfam, Ensembl, PDB, NCBI BLAST, GEO/SRA); reproducible analysis pipelines on \href{https://github.com/JigyasaV}{GitHub}}
+    \item \textbf{RNA Biology \& Structure Probing}{: \textit{in vitro} and \textit{in vivo} chemical probing (2A3, DMS); IVT; mRNA translation-efficiency assays; biophysical RNA characterization (mass photometry, dynamic light scattering); RT-qPCR}
+    \item \textbf{Molecular \& Cellular Biology}{: CRISPR/Cas9; shRNA/siRNA; cloning; mutagenesis; flow cytometry; mammalian cell culture (HEK293A and other immortalized cell lines); yeast genetics and SGA screens}
+    \item \textbf{Sequencing \& Library Prep}{: Illumina sequencing and library preparation; Oxford Nanopore long-read RNA sequencing; RNA-seq (mammalian and microbial)}
+    \item \textbf{Imaging \& Microscopy}{: confocal microscopy; live-cell and time-lapse imaging; high-content screening; quantitative image analysis (ImageJ, ZEN)}
+  }
+\end{itemize}
+
+%-----------Awards-----------
+\section{Awards}
+  \begin{itemize}[leftmargin=0.15in, label={}]
+    \small{
+     \item \textbf{mRNA Research Advancement Award}, CELLSCRIPT\texttrademark{} (2026)
+     \item \textbf{mRNA Innovators Award}, Eclipsebio (2025)
+     \item \textbf{President's Academic Excellence Initiative PhD Award}, University of British Columbia (2021--2023)
+     \item \textbf{Raymond A. Pederson Prize in Physiology}, University of British Columbia (2020)
+     \item \textbf{Junior Research Fellowship (CSIR-NET)}, Government of India (2017)
+   }
+   \end{itemize}
+
+%-----------Teaching and Service-----------
+\section{Teaching and Service}
+\begin{itemize}[leftmargin=0.15in, label={}]
+  \small{
+    \item \textbf{Peer Reviewer:} \textit{Science} (AAAS), 2025; \textit{Nature Communications} (Nature Portfolio), 2025 and 2026; \textit{Chemistry -- A European Journal} (Wiley), 2026
+    \item \textbf{Selected Talks:} Salk Cell Cycle Meeting, San Diego (2023); Gordon Research Conference on Centromeres in Health \& Disease, Vermont (2022)
+    \item \textbf{Mentorship:} trained and supervised undergraduate and junior researchers in RNA biochemistry, cloning, and imaging
+  }
+\end{itemize}
+
+%-----------EDUCATION-----------
+\section{Education}
+\begin{itemize}[leftmargin=0.15in, label={}]
+  \small{
+    \item \textbf{University of British Columbia} \hfill Vancouver, Canada \\
+    PhD, Cell and Developmental Biology \hfill 2017--2023
+
+    \item \textbf{Jawaharlal Nehru Centre for Advanced Scientific Research} \hfill Bangalore, India \\
+    MS, Molecular Biology and Genetics \hfill 2014--2017
+
+    \item \textbf{University of Delhi} \hfill Delhi, India \\
+    BSc, Microbiology \hfill 2011--2014
+  }
+\end{itemize}
+
+%-------------------------------------------
+\end{document}
