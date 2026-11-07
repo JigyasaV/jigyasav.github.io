@@ -1,0 +1,327 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Jigyasa Verma — RNA Biology &amp; Experimental Ground Truth for AI</title>
+<meta name="description" content="Jigyasa Verma is a postdoctoral researcher at Stanford building measurement methods for RNA, and using them to find where AI models of biology are wrong.">
+<style>
+  :root{
+    --ink:#16161a;
+    --ink-2:#55555f;
+    --ink-3:#8a8a95;
+    --rule:#e6e4df;
+    --paper:#fbfaf8;
+    --card:#ffffff;
+    --accent:#9c3a2e;
+    --accent-soft:#f3ece9;
+    color-scheme: light;
+  }
+  *{box-sizing:border-box}
+  html{scroll-behavior:smooth}
+  body{
+    margin:0; background:var(--paper); color:var(--ink);
+    font-family:"Iowan Old Style","Palatino Linotype",Palatino,"Georgia",serif;
+    font-size:17.5px; line-height:1.62; -webkit-font-smoothing:antialiased;
+  }
+  .wrap{max-width:720px;margin:0 auto;padding:0 28px}
+  a{color:var(--accent);text-decoration:none;border-bottom:1px solid rgba(156,58,46,.28)}
+  a:hover{border-bottom-color:var(--accent)}
+  h1,h2,h3,nav,.meta,.tag,.newsdate,.sans{
+    font-family:-apple-system,BlinkMacSystemFont,"Inter","Segoe UI",Helvetica,Arial,sans-serif;
+  }
+
+  /* ---------- nav ---------- */
+  nav{
+    position:sticky;top:0;z-index:20;background:rgba(251,250,248,.92);
+    backdrop-filter:saturate(1.6) blur(8px);border-bottom:1px solid var(--rule);
+  }
+  nav .wrap{display:flex;align-items:center;gap:22px;padding-top:13px;padding-bottom:13px}
+  nav .me{font-weight:650;font-size:14.5px;letter-spacing:-.01em;color:var(--ink);border:0;margin-right:auto}
+  nav a{font-size:13.5px;color:var(--ink-2);border:0;font-weight:500}
+  nav a:hover{color:var(--accent)}
+
+  /* ---------- hero ---------- */
+  header{padding:58px 0 10px}
+  .hero{display:flex;gap:30px;align-items:flex-start}
+  .hero img{
+    width:116px;height:116px;border-radius:50%;object-fit:cover;flex:none;
+    border:1px solid var(--rule);
+  }
+  h1{font-size:34px;line-height:1.14;margin:0 0 7px;letter-spacing:-.018em;font-weight:680}
+  .role{font-size:14px;color:var(--ink-3);margin:0 0 18px;letter-spacing:.015em;text-transform:uppercase;font-weight:600}
+  .lede{font-size:19px;line-height:1.56;margin:0}
+  header p{margin:16px 0 0;color:var(--ink-2)}
+  .links{display:flex;flex-wrap:wrap;gap:9px;margin-top:26px}
+  .links a{
+    border:1px solid var(--rule);border-radius:999px;padding:6px 15px;
+    font-size:13px;color:var(--ink-2);background:var(--card);
+    font-family:-apple-system,BlinkMacSystemFont,"Inter","Segoe UI",sans-serif;font-weight:500;
+  }
+  .links a:hover{border-color:var(--accent);color:var(--accent)}
+  .links a.primary{background:var(--ink);color:#fff;border-color:var(--ink)}
+  .links a.primary:hover{background:var(--accent);border-color:var(--accent);color:#fff}
+
+  /* ---------- sections ---------- */
+  section{padding:52px 0 0}
+  h2{
+    font-size:12.5px;text-transform:uppercase;letter-spacing:.13em;color:var(--ink-3);
+    font-weight:650;margin:0 0 26px;padding-bottom:11px;border-bottom:1px solid var(--rule);
+  }
+
+  /* ---------- news ---------- */
+  .news{display:grid;gap:3px}
+  .item{display:grid;grid-template-columns:86px 1fr;gap:20px;padding:13px 0;border-bottom:1px solid var(--rule)}
+  .item:last-child{border-bottom:0}
+  .newsdate{font-size:12.5px;color:var(--ink-3);padding-top:4px;font-weight:600;letter-spacing:.02em}
+  .item p{margin:0;font-size:16.5px;line-height:1.55}
+
+  /* ---------- research ---------- */
+  .work{
+    display:grid;grid-template-columns:168px 1fr;gap:24px;align-items:start;
+    padding-bottom:30px;margin-bottom:30px;border-bottom:1px solid var(--rule);
+  }
+  .work.notext{grid-template-columns:1fr}
+  .work:last-child{border-bottom:0;margin-bottom:0;padding-bottom:0}
+  .work .thumb{display:block;border:0}
+  .work .thumb img{
+    width:100%;border:1px solid var(--rule);border-radius:6px;display:block;background:#fff;
+  }
+  .work h3{font-size:19px;margin:0 0 5px;letter-spacing:-.012em;font-weight:650;line-height:1.32}
+  .tag{
+    display:inline-block;font-size:10.5px;letter-spacing:.07em;text-transform:uppercase;
+    font-weight:650;padding:3px 8px;border-radius:4px;margin-bottom:9px;
+    background:var(--accent-soft);color:var(--accent);
+  }
+  .tag.live{background:#eaf1ec;color:#2f6b45}
+  .tag.prep{background:#f0efec;color:var(--ink-2)}
+  .work p{margin:0;font-size:16.5px}
+
+  /* ---------- publications (Das-lab style) ---------- */
+  .pub{
+    display:grid;grid-template-columns:112px 1fr;gap:20px;align-items:start;
+    padding:18px 0;border-bottom:1px solid var(--rule);
+  }
+  .pub.noimg{grid-template-columns:1fr}
+  .pub:last-of-type{border-bottom:0}
+  .pub .thumb{display:block;border:0}
+  .pub .thumb img{width:100%;border:1px solid var(--rule);border-radius:5px;display:block;background:#fff}
+  .pub .a{font-size:14px;color:var(--ink-2);margin:0 0 4px;line-height:1.5}
+  .pub .a b{font-weight:680;color:var(--ink)}
+  .pub .t{font-size:16.5px;line-height:1.38;margin:0 0 4px;font-weight:600}
+  .pub .v{font-size:13.5px;color:var(--ink-3);margin:0 0 7px;
+    font-family:-apple-system,BlinkMacSystemFont,"Inter",sans-serif}
+  .reflinks{display:flex;gap:7px;flex-wrap:wrap}
+  .reflinks a{
+    font-family:-apple-system,BlinkMacSystemFont,"Inter",sans-serif;
+    font-size:12px;font-weight:550;padding:3px 10px;border-radius:4px;
+    border:1px solid var(--rule);color:var(--ink-2);background:var(--card);
+  }
+  .reflinks a:hover{border-color:var(--accent);color:var(--accent)}
+  .more{font-size:14.5px;margin-top:22px}
+
+  /* ---------- tools ---------- */
+  .tool{padding:17px 0;border-bottom:1px solid var(--rule)}
+  .tool:last-of-type{border-bottom:0}
+  .tool h3{font-size:17px;margin:0 0 5px;font-weight:650}
+  .tool .role-note{font-weight:400;color:var(--ink-3);font-size:14px}
+  .tool p{margin:0;font-size:16px;color:var(--ink-2)}
+
+  /* ---------- contact ---------- */
+  .addr{font-size:15px;color:var(--ink-2);line-height:1.7;margin:16px 0 0}
+  footer{margin-top:64px;padding:26px 0 52px;border-top:1px solid var(--rule);
+    font-size:13px;color:var(--ink-3);
+    font-family:-apple-system,BlinkMacSystemFont,"Inter",sans-serif;}
+
+  @media(max-width:620px){
+    body{font-size:16.5px}
+    .hero{flex-direction:column;gap:20px}
+    .hero img{width:92px;height:92px}
+    h1{font-size:28px}
+    .lede{font-size:17.5px}
+    .item{grid-template-columns:1fr;gap:3px}
+    .work,.pub{grid-template-columns:1fr;gap:14px}
+    .work .thumb img,.pub .thumb img{max-width:240px}
+    .newsdate{padding-top:0}
+    nav .wrap{gap:15px}
+    nav a{font-size:12.5px}
+  }
+</style>
+</head>
+<body>
+
+<nav><div class="wrap">
+  <a class="me" href="#top">Jigyasa Verma</a>
+  <a href="#news">News</a>
+  <a href="#research">Research</a>
+  <a href="#publications">Publications</a>
+  <a href="#contact">Contact</a>
+</div></nav>
+
+<header id="top"><div class="wrap">
+  <div class="hero">
+    <img src="headshot.jpg" alt="Jigyasa Verma">
+    <div>
+      <h1>Jigyasa Verma</h1>
+      <p class="role">Postdoctoral Researcher · Das Lab, Stanford University</p>
+      <p class="lede">I build measurement methods for RNA, and use them to find out where AI models of biology are wrong.</p>
+    </div>
+  </div>
+
+  <p>I'm a postdoc with <a href="http://daslab.stanford.edu/" target="_blank" rel="noopener">Rhiju Das</a> in the Department of Biochemistry. I invented <a href="#research">FAST-MaP</a>, a chemical-mapping method that takes an RNA from DNA template to per-nucleotide structure in under a week with no sequencing infrastructure, and I use readouts like it as ground truth for models that design and predict RNA.</p>
+
+  <p>Before Stanford I did my PhD at the University of British Columbia on how cells control mRNA turnover under mitotic stress, and my Masters at JNCASR in Bangalore on chromosome segregation. The through-line is the same: build the measurement, then use it to test what everyone assumes.</p>
+
+  <div class="links">
+    <a class="primary" href="Jigyasa_Verma_CV.pdf">Download CV</a>
+    <a href="mailto:jigyasav@stanford.edu">Email</a>
+    <a href="https://scholar.google.co.in/citations?user=hKGzqjgAAAAJ&hl=en" target="_blank" rel="noopener">Scholar</a>
+    <a href="https://github.com/JigyasaV" target="_blank" rel="noopener">GitHub</a>
+    <a href="https://orcid.org/0000-0002-9286-0299" target="_blank" rel="noopener">ORCID</a>
+    <a href="https://www.linkedin.com/in/jigyasa-verma/" target="_blank" rel="noopener">LinkedIn</a>
+  </div>
+</div></header>
+
+<section id="news"><div class="wrap">
+  <h2>News</h2>
+  <div class="news">
+    <div class="item"><div class="newsdate">Nov 2026</div><p>Presented FAST-MaP at the <a href="https://biochemistry.stanford.edu/events/conference-symposium/biochemistry-conference-november-2-4-2026-0" target="_blank" rel="noopener">Stanford Biochemistry Conference</a> in Santa Cruz.</p></div>
+    <div class="item"><div class="newsdate">Oct 2026</div><p>Presented FAST-MaP at the <a href="https://www.stanfordrnamedicine.com/2026-symposium" target="_blank" rel="noopener">Stanford RNA Medicine Symposium</a>.</p></div>
+    <div class="item"><div class="newsdate">Sep 2026</div><p><a href="https://www.biorxiv.org/content/10.64898/2026.09.22.753544v1" target="_blank" rel="noopener">FAST-MaP</a> is on bioRxiv, and under review at <em>Nature Protocols</em>, where it was commissioned as a protocol.</p></div>
+    <div class="item"><div class="newsdate">Sep 2026</div><p>Launched an <a href="https://eternagame.org/labs/16496126" target="_blank" rel="noopener">Eterna round</a> putting expert human designers and generative models on the same RNA design challenge, scored by experiment.</p></div>
+    <div class="item"><div class="newsdate">Aug 2026</div><p><a href="https://www.science.org/doi/10.1126/science.aeg6829" target="_blank" rel="noopener">De novo design of RNA pseudoknots with deep learning</a> is published on the cover of <em>Science</em>.</p></div>
+    <div class="item"><div class="newsdate">Jul 2026</div><p>FAST-MaP shared with <a href="https://www.hhmi.org/research/janelia/AI" target="_blank" rel="noopener">AI@HHMI</a> collaborators at Janelia, who adopted primer-less sequencing for their initial RNA structure-probing pilots.</p></div>
+    <div class="item"><div class="newsdate">Jan 2026</div><p>Received the mRNA Research Advancement Award from CELLSCRIPT.</p></div>
+  </div>
+</div></section>
+
+<section id="research"><div class="wrap">
+  <h2>Research</h2>
+
+  <div class="work">
+    <a class="thumb" href="https://www.biorxiv.org/content/10.64898/2026.09.22.753544v1" target="_blank" rel="noopener"><img src="fastmap_workflow.png" alt="FAST-MaP workflow"></a>
+    <div>
+      <span class="tag">Under review &middot; Nature Protocols</span>
+      <h3>Chemical mapping without the infrastructure</h3>
+      <p>Reading RNA structure usually means an in-house sequencing core and custom bioinformatics. FAST-MaP removes both. A DNA template goes to per-nucleotide reactivity in under a week, on commercial gene synthesis and sequencing, with analysis on a public web server. A lab anywhere can ask a quantitative structure question; collaborators at AI@HHMI adopted it for their initial structure-probing pilots.</p>
+    </div>
+  </div>
+
+  <div class="work">
+    <a class="thumb" href="https://www.science.org/doi/10.1126/science.aeg6829" target="_blank" rel="noopener"><img src="denovo_pseudoknots.jpg" alt="AI-designed RNA pseudoknots with cryo-EM densities"></a>
+    <div>
+      <span class="tag">Published &middot; Science 2026</span>
+      <h3>Telling a design model when it was wrong</h3>
+      <p>Generative models propose RNA structures faster than anyone can check them, and designed sequences have no evolutionary relatives to validate against. Chemical-mapping readouts produced by my method told the computational team which designs actually folded, and guided the rounds that followed.</p>
+    </div>
+  </div>
+
+  <div class="work notext">
+    <div>
+      <span class="tag live">Ongoing</span>
+      <h3>Humans against models, judged by experiment</h3>
+      <p>An <a href="https://eternagame.org/labs/16496126" target="_blank" rel="noopener">Eterna round</a> gives expert human designers and frontier generative models the same RNA design challenge. Every submission is scored by chemical mapping rather than against another model's prediction, so the result is a designed library that works as both a benchmark and as training data.</p>
+    </div>
+  </div>
+
+  <div class="work notext">
+    <div>
+      <span class="tag prep">Manuscript in preparation</span>
+      <h3>A translational switch no model predicts</h3>
+      <p>I designed mRNA constructs in which an engineered long-range interaction within the transcript represses cap-dependent translation roughly 8&ndash;9-fold, while a length- and composition-matched control represses only about 1.5-fold. The effect is sequence-specific and tunable by design. No published translation-efficiency model anticipates it, which makes it a clean case of a blind spot you can only find at the bench.</p>
+    </div>
+  </div>
+
+  <div class="work">
+    <a class="thumb" href="https://www.biorxiv.org/content/10.1101/2024.05.01.591760v3" target="_blank" rel="noopener"><img src="pan2pan3_abstract.jpg" alt="PAN2-PAN3 graphical abstract"></a>
+    <div>
+      <span class="tag">Under review &middot; Genetics</span>
+      <h3>Why a deadenylase matters in mitosis</h3>
+      <p>My PhD work: a genome-wide screen across ~4,800 yeast strains showed the PAN2&ndash;PAN3 deadenylase is selectively required for mitotic robustness under microtubule stress. A catalytically dead mutant expressed at wild-type levels failed to rescue, pinning the requirement on enzymatic activity rather than presence. The role holds from yeast to human cells.</p>
+    </div>
+  </div>
+</div></section>
+
+<section id="publications"><div class="wrap">
+  <h2>Selected publications</h2>
+
+  <div class="pub">
+    <a class="thumb" href="https://www.science.org/doi/10.1126/science.aeg6829" target="_blank" rel="noopener"><img src="denovo_pseudoknots.jpg" alt=""></a>
+    <div>
+      <p class="a">Townley, J.*, Kladwang, W.*, Baker, D., Blair, H. M., &hellip; <b>Verma, J.</b>, &hellip; Eterna Participants, and Das, R.</p>
+      <p class="t">De novo design of RNA pseudoknots with deep learning</p>
+      <p class="v"><em>Science</em> 393, 931&ndash;937 &middot; cover &middot; *equal contribution</p>
+      <div class="reflinks">
+        <a href="https://www.science.org/doi/10.1126/science.aeg6829" target="_blank" rel="noopener">Link</a>
+        <a href="https://doi.org/10.64898/2026.05.21.726960" target="_blank" rel="noopener">Preprint</a>
+      </div>
+    </div>
+  </div>
+
+  <div class="pub">
+    <a class="thumb" href="https://www.biorxiv.org/content/10.64898/2026.09.22.753544v1" target="_blank" rel="noopener"><img src="fastmap_workflow.png" alt=""></a>
+    <div>
+      <p class="a"><b>Verma, J.</b>, Blair, H. M., Kladwang, W., and Das, R.</p>
+      <p class="t">FAST-MaP: a rapid and accessible protocol for chemical mapping of RNA structures using primer-less sequencing</p>
+      <p class="v">Under review, <em>Nature Protocols</em> (commissioned), 2026</p>
+      <div class="reflinks">
+        <a href="https://www.biorxiv.org/content/10.64898/2026.09.22.753544v1.full.pdf" target="_blank" rel="noopener">Paper</a>
+        <a href="https://doi.org/10.64898/2026.09.22.753544" target="_blank" rel="noopener">Link</a>
+      </div>
+    </div>
+  </div>
+
+  <div class="pub">
+    <a class="thumb" href="https://www.biorxiv.org/content/10.1101/2024.05.01.591760v3" target="_blank" rel="noopener"><img src="pan2pan3_abstract.jpg" alt=""></a>
+    <div>
+      <p class="a"><b>Verma, J.</b>, He, Z., Brown, J. A. R., Dean, P., Young, B. P., Flibotte, S., Howe, L. J., Maxwell, C. D., Roskelley, C. D., and Loewen, C. J. R.</p>
+      <p class="t">PAN2&ndash;PAN3 deadenylase activity is selectively required for mitotic robustness under microtubule stress</p>
+      <p class="v">Under review, <em>Genetics</em>, 2026</p>
+      <div class="reflinks">
+        <a href="https://www.biorxiv.org/content/10.1101/2024.05.01.591760v3" target="_blank" rel="noopener">Preprint</a>
+      </div>
+    </div>
+  </div>
+
+  <div class="pub">
+    <a class="thumb" href="https://doi.org/10.1371/journal.pbio.3003069" target="_blank" rel="noopener"><img src="atg11_abstract.png" alt=""></a>
+    <div>
+      <p class="a">Reza, M. H., Aggarwal, R.*, <b>Verma, J.</b>*, Podh, N. K., Chowdhury, R., Mehta, G., Manjithaya, R., and Sanyal, K.</p>
+      <p class="t">Atg11 is required for high-fidelity chromosome segregation</p>
+      <p class="v"><em>PLOS Biology</em> 23, e3003069 &middot; *equal contribution</p>
+      <div class="reflinks">
+        <a href="https://doi.org/10.1371/journal.pbio.3003069" target="_blank" rel="noopener">Link</a>
+      </div>
+    </div>
+  </div>
+  </div>
+
+  <p class="more"><a href="https://scholar.google.co.in/citations?user=hKGzqjgAAAAJ&hl=en" target="_blank" rel="noopener">All publications on Google Scholar &rarr;</a></p>
+</div></section>
+
+<section id="tools"><div class="wrap">
+  <h2>Tools</h2>
+  <div class="tool">
+    <h3>FAST-MaP <span class="role-note">— inventor</span></h3>
+    <p>Primer-less RNA chemical-mapping pipeline with a public <a href="https://huggingface.co/spaces/daslab-stanford/cmuts" target="_blank" rel="noopener">web-based analysis server</a>. No in-house sequencing infrastructure required. Stanford OTL invention disclosure under review.</p>
+  </div>
+  <div class="tool">
+    <h3>cmuts <span class="role-note">— experimental validation</span></h3>
+    <p>Mutational-profiling pipeline scaling RNA structure profiling beyond the transcriptome, built by H. M. Blair. I generated the chemical-probing data used to validate it. <a href="https://huggingface.co/spaces/daslab-stanford/cmuts" target="_blank" rel="noopener">Web server</a> · <a href="https://doi.org/10.5281/zenodo.22805311" target="_blank" rel="noopener">v2.0.0 release</a></p>
+  </div>
+</div></section>
+
+<section id="contact"><div class="wrap">
+  <h2>Get in touch</h2>
+  <p>I'm interested in work where experiments and models actually close the loop. If that's what you're building, write to me: <a href="mailto:jigyasav@stanford.edu">jigyasav@stanford.edu</a></p>
+  <p class="addr">
+    Department of Biochemistry, Beckman Center<br>
+    Stanford University School of Medicine<br>
+    279 Campus Drive, Stanford, CA 94305
+  </p>
+</div></section>
+
+<footer><div class="wrap">© 2026 Jigyasa Verma</div></footer>
+
+</body>
+</html>
