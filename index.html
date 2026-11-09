@@ -179,7 +179,7 @@
     </div>
   </div>
 
-  <p>I'm a postdoc with <a href="https://daslab.stanford.edu/" target="_blank" rel="noopener">Rhiju Das</a> at Stanford. I invented <a href="#research">FAST-MaP</a>, a fast and accessible way to map RNA structure at single-nucleotide resolution, and use it to check whether AI-designed RNAs fold as predicted. I also design mRNAs that use structure to switch how much protein they make. The results go back to the models, so they can design the biomolecules and medicines of the future.</p>
+  <p>I'm a postdoc with <a href="https://daslab.stanford.edu/" target="_blank" rel="noopener">Rhiju Das</a> at Stanford. I invented <a href="#research">FAST-MaP</a> to read RNA structure quickly, use it to check whether AI-designed RNAs fold as predicted, and design mRNAs that use structure to control protein output. The results go back to the models, so they can design the medicines of the future.</p>
 
   <p>I came to RNA through cell division, studying chromosome segregation for my master's at JNCASR with <a href="https://molecularmycologylab.wixsite.com/kaustuv" target="_blank" rel="noopener">Kaustuv Sanyal</a>, and mRNA stability during mitosis for my PhD at the University of British Columbia with <a href="https://cps.med.ubc.ca/faculty/loewen/" target="_blank" rel="noopener">Christopher Loewen</a> and <a href="https://lsi.ubc.ca/people/calvin-roskelley/" target="_blank" rel="noopener">Calvin Roskelley</a>.</p>
 
@@ -213,7 +213,7 @@
     <div>
       <span class="tag">Preprint</span>
       <h3>FAST-MaP: chemical mapping of RNA structures without the infrastructure</h3>
-      <p>Reading RNA structure usually needs an in-house sequencing core and custom bioinformatics. This protocol removes both. Gene synthesis and primer-less Nanopore sequencing come from commercial services, and analysis runs on a <a href="https://huggingface.co/spaces/daslab-stanford/cmuts" target="_blank" rel="noopener">public web server</a>, so a DNA template becomes per-nucleotide reactivity in under a week. Each step is modular and can be handed off, so any lab can ask a quantitative structure question. I also generated the chemical-probing data used to validate <a href="https://doi.org/10.5281/zenodo.22805311" target="_blank" rel="noopener">cmuts</a>, the analysis software behind the server, built by H. M. Blair.</p>
+      <p>DNA template to per-nucleotide RNA structure data in under a week, using commercial gene synthesis, Nanopore sequencing and a <a href="https://huggingface.co/spaces/daslab-stanford/cmuts" target="_blank" rel="noopener">public analysis server</a>. No sequencing core or custom code needed. I also generated the data used to validate the server's software, <a href="https://doi.org/10.5281/zenodo.22805311" target="_blank" rel="noopener">cmuts</a>.</p>
     </div>
   </div>
 
@@ -222,7 +222,7 @@
     <div>
       <span class="tag">Science 2026 &middot; Cover</span>
       <h3>Checking if AI-designed RNAs actually fold as predicted</h3>
-      <p>Generative models now propose RNA structures faster than anyone can check them, and designed sequences have no natural relatives to validate against. Chemical-mapping data from FAST-MaP showed the computational team which designs folded as predicted and guided the next rounds of design.</p>
+      <p>FAST-MaP data showed which AI-designed RNA pseudoknots folded as predicted, and guided the next rounds of design.</p>
     </div>
   </div>
 
@@ -230,8 +230,7 @@
     <div>
       <span class="tag live">Ongoing</span>
       <h3>Designing mRNAs that use structure to control protein output</h3>
-      <p>Measuring structure led me to design with it. Most therapeutic mRNAs today are simply on. I engineered a long-range interaction within an mRNA that strongly represses cap-dependent translation, while a length- and composition-matched control barely changes it. The effect is sequence-specific and tunable by design, and none of the translation-efficiency models I tested predict it. I benchmark RNA structure predictors, RNA foundation models, and translation-efficiency models against data like this.</p>
-      <p>To test more designs than one lab can imagine, I turned this construct into an open design challenge on Eterna, <a href="https://eternagame.org/labs/16496126" target="_blank" rel="noopener"><em>mRNA Switch Controls</em></a>. Players design 50-nt 3&prime; elements that fold back over the start codon of a NanoLuc reporter to switch translation off or on. The pilot round is complete, and the selected designs are now in experimental validation.</p>
+      <p>I engineer structure inside mRNAs to turn protein output down, and a matched control shows the effect is sequence-specific. None of the translation-efficiency models I tested predict it. On Eterna, <a href="https://eternagame.org/labs/16496126" target="_blank" rel="noopener"><em>mRNA Switch Controls</em></a> opens this design problem to players, and the selected designs are now being tested.</p>
     </div>
   </div>
 
@@ -240,7 +239,7 @@
     <div>
       <span class="tag">Preprint</span>
       <h3>mRNA deadenylases keep cell division robust under microtubule stress</h3>
-      <p>This is where my interest in RNA began. A genome-wide screen across ~4,800 yeast strains showed that the PAN2&ndash;PAN3 deadenylase, which trims mRNA poly(A) tails, is selectively required for mitosis under microtubule stress. A catalytically dead mutant failed to rescue, so the cell needs the enzyme's activity, not just the protein. The role holds from yeast to human cells.</p>
+      <p>In my PhD, a genome-wide yeast screen showed the PAN2&ndash;PAN3 deadenylase is needed for mitosis under microtubule stress. It is the enzyme's activity that matters, and the role holds from yeast to human cells.</p>
     </div>
   </div>
 </div></section>
@@ -299,7 +298,7 @@
 
 <section id="bench"><div class="wrap">
   <h2>At the bench</h2>
-  <p class="bench">RNA chemical mapping (2A3, DMS) &middot; Nanopore and Illumina library prep &middot; mRNA construct design and NanoLuc reporter assays &middot; mammalian cell culture, siRNA/shRNA, CRISPR/Cas9 &middot; yeast genetics and genome-wide screens &middot; confocal and live-cell imaging &middot; Python and R analysis pipelines</p>
+  <p class="bench">RNA chemical mapping (2A3, DMS) &middot; Nanopore and Illumina library prep &middot; mRNA construct design and NanoLuc reporter assays &middot; mammalian cell culture, siRNA/shRNA, CRISPR/Cas9 &middot; yeast genetics and genome-wide screens &middot; confocal and live-cell imaging &middot; Python and R analysis pipelines &middot; benchmarking RNA structure, foundation and translation-efficiency models against bench data</p>
 </div></section>
 
 <section id="contact"><div class="wrap">
@@ -307,7 +306,7 @@
   <p>I like working where fast, reproducible experiments and AI models make each other better. Write to me at <a href="mailto:jigyasav@stanford.edu">jigyasav@stanford.edu</a>.</p>
 </div></section>
 
-<footer><div class="wrap">© 2026 Jigyasa Verma</div></footer>
+<footer><div class="wrap">© 2026 Jigyasa Verma &middot; Last updated November 2026</div></footer>
 
 </body>
 </html>
