@@ -131,7 +131,8 @@
   .thumb figcaption{font-size:11.5px;line-height:1.45;color:var(--ink-3);padding:6px 12px 8px;border-top:1px solid var(--rule);background:#fafbfa}
   .thumb figcaption a{color:var(--ink-2)}
   .legend{position:absolute;top:10px;left:12px;display:flex;align-items:center;gap:6px;font-size:11px;color:var(--ink-3);background:rgba(255,255,255,.85);padding:2px 6px;border-radius:4px;z-index:2}
-  .legend .grad{display:inline-block;width:64px;height:8px;border-radius:4px;background:linear-gradient(90deg,#788ca0,#f5b041,#c8281e)}
+  .legend .grad{display:inline-block;width:64px;height:8px;border-radius:4px;background:linear-gradient(90deg,#f8f8f8,#78aabe,#1e4b5f);border:1px solid #d5d8db}
+  .legend .sw{display:inline-block;width:9px;height:9px;border-radius:50%;background:rgb(150,125,215);margin-left:6px}
   @media(max-width:900px){
     body{background:#fff}
     aside{display:block}
@@ -192,9 +193,9 @@
   <div class="cards">
   <div class="work">
     <figure class="thumb viz">
-      <div class="mol" id="mol-fastmap" role="img" aria-label="Rotating 3D structure of the ROOL RNA colored by FAST-MaP 2A3 reactivity"></div>
-      <div class="legend"><span>low</span><i class="grad"></i><span>high 2A3 reactivity</span></div>
-      <figcaption>ROOL env-120 RNA colored by FAST-MaP data. Structure: Kretsch et al., <a href="https://doi.org/10.1038/s41586-025-09073-0" target="_blank" rel="noopener"><em>Nature</em> 2025</a> (PDB <a href="https://www.rcsb.org/structure/9MDS" target="_blank" rel="noopener">9MDS</a>).</figcaption>
+      <div class="mol" id="mol-fastmap" role="img" aria-label="Rotating ROOL env-120 octameric cage colored by FAST-MaP 2A3 reactivity"></div>
+      <div class="legend"><span>0</span><i class="grad"></i><span>1.5 &nbsp;2A3 reactivity</span><i class="sw"></i><span>primer region</span></div>
+      <figcaption>FAST-MaP 2A3 reactivity on all eight chains of the ROOL env-120 cage, as in Fig. 4b of the <a href="https://www.biorxiv.org/content/10.64898/2026.09.22.753544v1" target="_blank" rel="noopener">preprint</a>. Structure: Kretsch et al., <a href="https://doi.org/10.1038/s41586-025-09073-0" target="_blank" rel="noopener"><em>Nature</em> 2025</a> (PDB <a href="https://www.rcsb.org/structure/9MDS" target="_blank" rel="noopener">9MDS</a>).</figcaption>
     </figure>
     <div>
       <span class="tag">Preprint</span>
@@ -410,11 +411,6 @@
   var CART = {style:'oval', thickness:1.0, width:1.6};
   function lerp(a,b,t){return Math.round(a+(b-a)*t);}
   function mix(c1,c2,t){return 'rgb('+lerp(c1[0],c2[0],t)+','+lerp(c1[1],c2[1],t)+','+lerp(c1[2],c2[2],t)+')';}
-  function reactColor(v){
-    if(v===undefined||v===null) return 'rgb(190,196,202)';
-    var t=Math.max(0,Math.min(1,v));
-    return t<0.4 ? mix([120,140,160],[245,176,65],t/0.4) : mix([245,176,65],[200,40,30],(t-0.4)/0.6);
-  }
   function hsl2rgb(h,s,l){s/=100;l/=100;var k=function(n){return (n+h/30)%12;},a=s*Math.min(l,1-l),
     f=function(n){return l-a*Math.max(-1,Math.min(k(n)-3,Math.min(9-k(n),1)));};
     return 'rgb('+Math.round(255*f(0))+','+Math.round(255*f(8))+','+Math.round(255*f(4))+')';}
@@ -427,14 +423,37 @@
     }
     return v;
   }
-  // FAST-MaP: ROOL env-120 (PDB 9MDS, chain A) colored by FAST-MaP 2A3 reactivity
+  // FAST-MaP: 2A3 reactivity on all eight chains of the ROOL env-120 cage (PDB 9MDS), as in Fig. 4b of the preprint.
+  // Chain A is stored once; the other seven chains are rebuilt from the cage's symmetry operators.
+  function teal(resi,R){
+    if(resi<21||resi>635) return 'rgb(150,125,215)';          // primer regions, no data
+    var v=R[resi]; if(v===undefined) return 'rgb(235,235,235)';
+    var t=Math.max(0,Math.min(1,v/1.5));                        // same 0-1.5 scale as the figure
+    return t<0.5 ? mix([248,248,248],[120,170,190],t/0.5) : mix([120,170,190],[30,75,95],(t-0.5)/0.5);
+  }
+  function buildCage(pdb,ops){
+    var lines=pdb.split('\n').filter(function(l){return l.indexOf('ATOM')===0;}), out=[], n=0;
+    ops.forEach(function(op,k){
+      var R=op.R,t=op.t,ch=String.fromCharCode(65+k);
+      lines.forEach(function(l){
+        var x=+l.substr(30,8),y=+l.substr(38,8),z=+l.substr(46,8);
+        var X=R[0][0]*x+R[0][1]*y+R[0][2]*z+t[0], Y=R[1][0]*x+R[1][1]*y+R[1][2]*z+t[1], Z=R[2][0]*x+R[2][1]*y+R[2][2]*z+t[2];
+        n++; out.push(l.substr(0,6)+('     '+(n%100000)).slice(-5)+l.substr(11,10)+ch+l.substr(22,8)+
+          ('        '+X.toFixed(3)).slice(-8)+('        '+Y.toFixed(3)).slice(-8)+('        '+Z.toFixed(3)).slice(-8)+l.substr(54));
+      });
+    });
+    return out.join('\n');
+  }
   var v1=makeViewer('mol-fastmap');
   if(v1){
+    var small=window.matchMedia && window.matchMedia('(max-width:600px)').matches;
     Promise.all([fetch('rool120_chainA.pdb').then(function(r){return r.text();}),
-                 fetch('rool120_2A3.json').then(function(r){return r.json();})]).then(function(d){
-      var R=d[1]; v1.addModel(d[0],'pdb');
-      v1.setStyle({},{cartoon:cart(function(a){return reactColor(R[a.resi]);})});
-      v1.zoomTo(); v1.zoom(1.2); v1.render();
+                 fetch('rool120_2A3.json').then(function(r){return r.json();}),
+                 fetch('rool120_cage_ops.json').then(function(r){return r.json();})]).then(function(d){
+      var R=d[1];
+      v1.addModel(small?d[0]:buildCage(d[0],d[2]),'pdb');
+      v1.setStyle({},{sphere:{colorfunc:function(a){return teal(a.resi,R);}}});
+      v1.zoomTo(); v1.zoom(1.05); v1.render();
     });
   }
   // Science: designed pseudoknot (PDB 10ZU), rainbow 5' to 3'
