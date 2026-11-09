@@ -101,6 +101,7 @@
   .tag.live{background:#eaf1ec;color:#2f6b45}
   .tag.prep{background:#f0efec;color:var(--ink-2)}
   .work p{margin:0;font-size:16.5px}
+  #research .intro{margin:0 0 28px;font-size:17px;color:var(--ink-2)}
 
   /* ---------- publications (Das-lab style) ---------- */
   .pub{
@@ -193,7 +194,7 @@
     <div class="item"><div class="newsdate">Nov 2026</div><p>Presented FAST-MaP at the <a href="https://biochemistry.stanford.edu/events/conference-symposium/biochemistry-conference-november-2-4-2026-0" target="_blank" rel="noopener">Stanford Biochemistry Conference</a> in Santa Cruz.</p></div>
     <div class="item"><div class="newsdate">Oct 2026</div><p>Presented FAST-MaP at the <a href="https://www.stanfordrnamedicine.com/2026-symposium" target="_blank" rel="noopener">Stanford RNA Medicine Symposium</a>.</p></div>
     <div class="item"><div class="newsdate">Sep 2026</div><p><a href="https://www.biorxiv.org/content/10.64898/2026.09.22.753544v1" target="_blank" rel="noopener">FAST-MaP</a> is on bioRxiv, and under review as an invited protocol.</p></div>
-    <div class="item"><div class="newsdate">Sep 2026</div><p>Launched <a href="https://eternagame.org/labs/16496126" target="_blank" rel="noopener"><em>mRNA Switch Controls</em></a>, an Eterna crowdsourcing lab for designing self-regulating mRNAs. The pilot round is complete and the designs are now in experimental validation.</p></div>
+    <div class="item"><div class="newsdate">Sep 2026</div><p>Launched <a href="https://eternagame.org/labs/16496126" target="_blank" rel="noopener"><em>mRNA Switch Controls</em></a>, an Eterna crowdsourcing lab for designing mRNA switches. The pilot round is complete and the designs are now in experimental validation.</p></div>
     <div class="item"><div class="newsdate">Aug 2026</div><p><a href="https://www.science.org/doi/10.1126/science.aeg6829" target="_blank" rel="noopener">De novo design of RNA pseudoknots with deep learning</a> is published on the cover of <em>Science</em>.</p></div>
     <div class="item"><div class="newsdate">Jan 2026</div><p>Received the mRNA Research Advancement Award from CELLSCRIPT.</p></div>
   </div>
@@ -201,13 +202,14 @@
 
 <section id="research"><div class="wrap">
   <h2>Research</h2>
+  <p class="intro">Each project builds on the one before. I built a faster way to measure RNA structure, used it to check what AI models design, and now use structure to design mRNAs myself.</p>
 
   <div class="work">
     <a class="thumb" href="https://www.biorxiv.org/content/10.64898/2026.09.22.753544v1" target="_blank" rel="noopener"><img src="fastmap_workflow.png" alt="FAST-MaP workflow"></a>
     <div>
       <span class="tag">Under review</span>
-      <h3>Chemical mapping without the infrastructure</h3>
-      <p>Reading RNA structure usually means an in-house sequencing core and custom bioinformatics. FAST-MaP removes both. A DNA template goes to per-nucleotide reactivity in under a week, on commercial gene synthesis and sequencing, with analysis on a public web server. A lab anywhere can ask a quantitative structure question.</p>
+      <h3>FAST-MaP: chemical mapping of RNA structures without the infrastructure</h3>
+      <p>Reading RNA structure usually needs an in-house sequencing core and custom bioinformatics. FAST-MaP removes both. A DNA template goes to per-nucleotide reactivity in under a week, using commercial gene synthesis and sequencing and a public web server for analysis, so any lab can ask a quantitative structure question.</p>
     </div>
   </div>
 
@@ -215,24 +217,24 @@
     <a class="thumb" href="https://www.science.org/doi/10.1126/science.aeg6829" target="_blank" rel="noopener"><img src="denovo_pseudoknots.jpg" alt="AI-designed RNA pseudoknots with cryo-EM densities"></a>
     <div>
       <span class="tag">Published &middot; Science 2026</span>
-      <h3>Checking which AI-designed RNAs actually fold</h3>
-      <p>Generative models propose RNA structures faster than anyone can check them, and designed sequences have no evolutionary relatives to validate against. Chemical-mapping readouts produced by my method told the computational team which designs actually folded, and guided the rounds that followed.</p>
-    </div>
-  </div>
-
-  <div class="work notext">
-    <div>
-      <span class="tag live">Pilot round complete</span>
-      <h3>Crowdsourcing a toolkit of self-controlling mRNAs</h3>
-      <p>Today's therapeutic mRNA is mostly a simple on switch. I designed and launched <a href="https://eternagame.org/labs/16496126" target="_blank" rel="noopener"><em>mRNA Switch Controls</em></a> on Eterna to turn one working construct into an open design challenge: players build 50-nt 3&prime; elements that fold back over the start codon of a NanoLuc reporter, silencing it or switching it on. The pilot round is complete, and the selected designs are now in experimental validation.</p>
+      <h3>Checking if AI-designed RNAs actually fold as predicted, using FAST-MaP</h3>
+      <p>Generative models now propose RNA structures faster than anyone can check them, and designed sequences have no natural relatives to validate against. Chemical-mapping data from FAST-MaP showed the computational team which designs folded as predicted and guided the next rounds of design.</p>
     </div>
   </div>
 
   <div class="work notext">
     <div>
       <span class="tag prep">Manuscript in preparation</span>
-      <h3>A translational switch no model predicts</h3>
-      <p>I designed mRNA constructs in which an engineered long-range interaction within the transcript represses cap-dependent translation roughly 8&ndash;9-fold, while a length- and composition-matched control represses only about 1.5-fold. The effect is sequence-specific and tunable by design. No published translation-efficiency model anticipates it, which makes it a clean case of a blind spot you can only find at the bench.</p>
+      <h3>Designing mRNAs that use structure to control protein output</h3>
+      <p>Measuring structure led me to design with it. Most therapeutic mRNAs today are simply on. I engineered a long-range interaction within an mRNA that represses cap-dependent translation about 8&ndash;9-fold, while a length- and composition-matched control represses only about 1.5-fold. The effect is sequence-specific and tunable by design, and no published translation-efficiency model predicts it, which is exactly why models need data from the bench.</p>
+    </div>
+  </div>
+
+  <div class="work notext">
+    <div>
+      <span class="tag live">Pilot round complete</span>
+      <h3>Crowdsourcing more mRNA switch designs on Eterna</h3>
+      <p>To test more designs than one lab can imagine, I launched <a href="https://eternagame.org/labs/16496126" target="_blank" rel="noopener"><em>mRNA Switch Controls</em></a> on Eterna, turning my working construct into an open design challenge. Players design 50-nt 3&prime; elements that fold back over the start codon of a NanoLuc reporter to switch translation off or on. The pilot round is complete, and the selected designs are now in experimental validation.</p>
     </div>
   </div>
 
@@ -240,8 +242,8 @@
     <a class="thumb" href="https://www.biorxiv.org/content/10.1101/2024.05.01.591760v3" target="_blank" rel="noopener"><img src="pan2pan3_abstract.jpg" alt="PAN2-PAN3 graphical abstract"></a>
     <div>
       <span class="tag">Under review</span>
-      <h3>Why a deadenylase matters in mitosis</h3>
-      <p>My PhD work: a genome-wide screen across ~4,800 yeast strains showed the PAN2&ndash;PAN3 deadenylase is selectively required for mitotic robustness under microtubule stress. A catalytically dead mutant expressed at wild-type levels failed to rescue, pinning the requirement on enzymatic activity rather than presence. The role holds from yeast to human cells.</p>
+      <h3>PhD: how mRNA tail trimming keeps cell division robust under stress</h3>
+      <p>This is where my interest in RNA began. A genome-wide screen across ~4,800 yeast strains showed that the PAN2&ndash;PAN3 deadenylase, which trims mRNA poly(A) tails, is selectively required for mitosis under microtubule stress. A catalytically dead mutant failed to rescue, so the cell needs the enzyme's activity, not just the protein. The role holds from yeast to human cells.</p>
     </div>
   </div>
 </div></section>
@@ -317,7 +319,7 @@
 
 <section id="contact"><div class="wrap">
   <h2>Get in touch</h2>
-  <p>I'm interested in work where experiments and models actually close the loop. If that's what you're building, write to me: <a href="mailto:jigyasav@stanford.edu">jigyasav@stanford.edu</a></p>
+  <p>I'm looking for a team where fast, reproducible experiments and AI models make each other better. If that's what you're building, write to me: <a href="mailto:jigyasav@stanford.edu">jigyasav@stanford.edu</a></p>
   <p class="addr">
     Department of Biochemistry, Beckman Center<br>
     Stanford University School of Medicine<br>
