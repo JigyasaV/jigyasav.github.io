@@ -23,7 +23,7 @@
   }
   *{box-sizing:border-box}
   html{scroll-behavior:smooth}
-  body{margin:0;background:var(--paper);color:var(--ink);
+  body{margin:0;background:linear-gradient(90deg,var(--side) 50%,#fff 50%);color:var(--ink);
     font-family:-apple-system,BlinkMacSystemFont,"Inter","Segoe UI",Helvetica,Arial,sans-serif;
     font-size:16px;line-height:1.65;-webkit-font-smoothing:antialiased}
   a{color:var(--accent);text-decoration:none;border-bottom:1px solid rgba(31,111,107,.3)}
@@ -34,7 +34,7 @@
   .layout{display:grid;grid-template-columns:310px minmax(0,1fr);min-height:100vh}
   aside{position:sticky;top:0;height:100vh;overflow:auto;background:var(--side);
     border-right:1px solid var(--rule);padding:52px 34px 32px;display:flex;flex-direction:column}
-  main{padding:52px 56px 0}
+  main{padding:52px 56px 0;background:#fff}
 
   /* ---------- sidebar ---------- */
   aside img.me{width:132px;height:132px;object-fit:cover;border-radius:12px;display:block;border:1px solid var(--rule)}
@@ -122,6 +122,12 @@
     .row{grid-template-columns:1fr;gap:0}
   }
   @media(max-width:900px){
+    body{background:#fff}
+    aside{display:block}
+    aside img.me{float:left;width:84px;height:84px;margin:0 16px 6px 0}
+    aside h1{margin-top:6px}
+    .lede{clear:both;padding-top:12px}
+    .sidenav{display:none !important}
     .layout{grid-template-columns:1fr}
     aside{position:static;height:auto;border-right:0;border-bottom:1px solid var(--rule);padding:32px 24px 26px}
     .sidenav{flex-direction:row;flex-wrap:wrap;gap:14px}
@@ -148,6 +154,7 @@
     <a href="#research">Research</a>
     <a href="#publications">Publications</a>
     <a href="#news">News</a>
+    <a href="#bench">Toolkit</a>
     <a href="#contact">Contact</a>
   </nav>
   <div class="links">
@@ -159,13 +166,12 @@
     <a href="https://www.linkedin.com/in/jigyasa-verma/" target="_blank" rel="noopener">LinkedIn</a>
     <a href="https://x.com/JigyasaVer" target="_blank" rel="noopener">X</a>
   </div>
-  <p class="updated">Last updated November 2026</p>
 </aside>
 
 <main>
 <section id="about">
   <h2>About</h2>
-  <p>I'm a postdoc with <a href="https://daslab.stanford.edu/" target="_blank" rel="noopener">Rhiju Das</a> at Stanford. I invented <a href="#research">FAST-MaP</a> to read RNA structure quickly, use it to check whether AI-designed RNAs fold as predicted, and design mRNAs that use structure to control protein output. The results go back to the models, so they can design the medicines of the future.</p>
+  <p>I'm a postdoc with <a href="https://daslab.stanford.edu/" target="_blank" rel="noopener">Rhiju Das</a> at Stanford. I invented <a href="#research">FAST-MaP</a>, a fast way to read RNA structure. I use it to check whether AI-designed RNAs fold as predicted, and I design mRNAs that use structure to control protein output. The results go back to the models, so they can design the medicines of the future.</p>
   <p>I came to RNA through cell division, studying chromosome segregation for my master's at JNCASR with <a href="https://molecularmycologylab.wixsite.com/kaustuv" target="_blank" rel="noopener">Kaustuv Sanyal</a>, and mRNA stability during mitosis for my PhD at the University of British Columbia with <a href="https://cps.med.ubc.ca/faculty/loewen/" target="_blank" rel="noopener">Christopher Loewen</a> and <a href="https://lsi.ubc.ca/people/calvin-roskelley/" target="_blank" rel="noopener">Calvin Roskelley</a>.</p>
 </section>
 
@@ -178,7 +184,7 @@
     <div>
       <span class="tag">Preprint</span>
       <h3>FAST-MaP: chemical mapping of RNA structures without the infrastructure</h3>
-      <p>DNA template to per-nucleotide RNA structure data in under a week, using commercial gene synthesis, Nanopore sequencing and a <a href="https://huggingface.co/spaces/daslab-stanford/cmuts" target="_blank" rel="noopener">public analysis server</a>. No sequencing core or custom code needed. I also generated the data used to validate the server's software, <a href="https://doi.org/10.5281/zenodo.22805311" target="_blank" rel="noopener">cmuts</a>.</p>
+      <p>DNA template to per-nucleotide RNA structure data in under a week, using commercial gene synthesis, Nanopore sequencing and a <a href="https://huggingface.co/spaces/daslab-stanford/cmuts" target="_blank" rel="noopener">public analysis server</a>. No sequencing core or custom code needed, and I generated the data used to validate the server's software, <a href="https://doi.org/10.5281/zenodo.22805311" target="_blank" rel="noopener">cmuts</a>.</p>
     </div>
   </div>
 
@@ -186,8 +192,8 @@
     <a class="thumb" href="https://www.science.org/doi/10.1126/science.aeg6829" target="_blank" rel="noopener"><img src="card_pseudoknot.jpg" alt="Cryo-EM density of an AI-designed RNA pseudoknot"></a>
     <div>
       <span class="tag">Science 2026 &middot; Cover</span>
-      <h3>Checking if AI-designed RNAs actually fold as predicted</h3>
-      <p>FAST-MaP data showed which AI-designed RNA pseudoknots folded as predicted, and guided the next rounds of design.</p>
+      <h3>Testing AI-designed RNAs at the bench</h3>
+      <p>Generative models design RNAs that have no natural relatives to check against. FAST-MaP data showed which AI-designed pseudoknots folded as predicted, and guided the next rounds of design.</p>
     </div>
   </div>
 
@@ -196,7 +202,7 @@
     <div>
       <span class="tag live">Ongoing</span>
       <h3>Designing mRNAs that use structure to control protein output</h3>
-      <p>I engineer structure inside mRNAs to turn protein output down, and a matched control shows the effect is sequence-specific. None of the translation-efficiency models I tested predict it. On Eterna, <a href="https://eternagame.org/labs/16496126" target="_blank" rel="noopener"><em>mRNA Switch Controls</em></a> opens this design problem to players, and the selected designs are now being tested.</p>
+      <p>I engineer structure inside mRNAs to turn protein output down. A matched control shows the effect is sequence-specific, and the translation-efficiency models I tested miss it. On Eterna, <a href="https://eternagame.org/labs/16496126" target="_blank" rel="noopener"><em>mRNA Switch Controls</em></a> opens this design problem to players.</p>
     </div>
   </div>
 
@@ -217,24 +223,24 @@
   <div class="pubgrid">
   <div class="pub noimg">
     <div>
-      <p class="a">Townley, J.*, Kladwang, W.*, Baker, D., Blair, H. M., &hellip; <b>Verma, J.</b>, &hellip; Eterna Participants, and Das, R.</p>
-      <p class="t">De novo design of RNA pseudoknots with deep learning</p>
-      <p class="v"><em>Science</em> 393, 931&ndash;937, 2026 &middot; cover &middot; *equal contribution</p>
+      <p class="a"><b>Verma, J.</b>, Blair, H. M., Kladwang, W., and Das, R.</p>
+      <p class="t">FAST-MaP: a rapid and accessible protocol for chemical mapping of RNA structures using primer-less sequencing</p>
+      <p class="v">Invited protocol &middot; under review, 2026</p>
       <div class="reflinks">
-        <a href="https://www.science.org/doi/10.1126/science.aeg6829" target="_blank" rel="noopener">Link</a>
-        <a href="https://doi.org/10.64898/2026.05.21.726960" target="_blank" rel="noopener">Preprint</a>
+        <a href="https://doi.org/10.64898/2026.09.22.753544" target="_blank" rel="noopener">Preprint</a>
+        <a href="https://www.biorxiv.org/content/10.64898/2026.09.22.753544v1.full.pdf" target="_blank" rel="noopener">PDF</a>
       </div>
     </div>
   </div>
 
   <div class="pub noimg">
     <div>
-      <p class="a"><b>Verma, J.</b>, Blair, H. M., Kladwang, W., and Das, R.</p>
-      <p class="t">FAST-MaP: a rapid and accessible protocol for chemical mapping of RNA structures using primer-less sequencing</p>
-      <p class="v">Invited protocol &middot; under review, 2026</p>
+      <p class="a">Townley, J.*, Kladwang, W.*, Baker, D., Blair, H. M., &hellip; <b>Verma, J.</b>, &hellip; Eterna Participants, and Das, R.</p>
+      <p class="t">De novo design of RNA pseudoknots with deep learning</p>
+      <p class="v"><em>Science</em> 393, 931&ndash;937, 2026 &middot; cover &middot; *equal contribution</p>
       <div class="reflinks">
-        <a href="https://www.biorxiv.org/content/10.64898/2026.09.22.753544v1.full.pdf" target="_blank" rel="noopener">Paper</a>
-        <a href="https://doi.org/10.64898/2026.09.22.753544" target="_blank" rel="noopener">Link</a>
+        <a href="https://www.science.org/doi/10.1126/science.aeg6829" target="_blank" rel="noopener">Journal</a>
+        <a href="https://doi.org/10.64898/2026.05.21.726960" target="_blank" rel="noopener">Preprint</a>
       </div>
     </div>
   </div>
@@ -256,7 +262,7 @@
       <p class="t">Atg11 is required for high-fidelity chromosome segregation</p>
       <p class="v"><em>PLOS Biology</em> 23, e3003069, 2025 &middot; *equal contribution</p>
       <div class="reflinks">
-        <a href="https://doi.org/10.1371/journal.pbio.3003069" target="_blank" rel="noopener">Link</a>
+        <a href="https://doi.org/10.1371/journal.pbio.3003069" target="_blank" rel="noopener">Journal</a>
       </div>
     </div>
   </div>
@@ -279,13 +285,13 @@
 
 <div class="side-col">
 <section id="bench"><div class="wrap">
-  <h2>At the bench</h2>
+  <h2>Toolkit</h2>
   <p class="bench">RNA chemical mapping (2A3, DMS) &middot; Nanopore and Illumina library prep &middot; mRNA construct design and NanoLuc reporter assays &middot; mammalian cell culture, siRNA/shRNA, CRISPR/Cas9 &middot; yeast genetics and genome-wide screens &middot; confocal and live-cell imaging &middot; Python and R analysis pipelines &middot; benchmarking RNA structure, foundation and translation-efficiency models against bench data</p>
 </div></section>
 
 <section id="contact"><div class="wrap">
-  <h2>Get in touch</h2>
-  <p>I like working where fast, reproducible experiments and AI models make each other better. Write to me at <a href="mailto:jigyasav@stanford.edu">jigyasav@stanford.edu</a>.</p>
+  <h2>Contact</h2>
+  <p>Happy to talk about RNA assays, model benchmarking or FAST-MaP. Write to me at <a href="mailto:jigyasav@stanford.edu">jigyasav@stanford.edu</a>.</p>
 </div></section>
 </div></div>
 
