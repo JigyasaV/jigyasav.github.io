@@ -133,6 +133,13 @@
   .legend{position:absolute;top:10px;left:12px;display:flex;align-items:center;gap:6px;font-size:11px;color:var(--ink-3);background:rgba(255,255,255,.85);padding:2px 6px;border-radius:4px;z-index:2}
   .legend .grad{display:inline-block;width:64px;height:8px;border-radius:4px;background:linear-gradient(90deg,#f8f8f8,#78aabe,#1e4b5f);border:1px solid #d5d8db}
   .state{position:absolute;bottom:52px;right:10px;font-size:11.5px;font-weight:600;color:var(--ink-2);background:rgba(255,255,255,.9);padding:2px 8px;border-radius:4px;z-index:2;border:1px solid var(--rule)}
+  .legend .sw5,.legend .sw3{display:inline-block;width:14px;height:5px;border-radius:3px}
+  .legend .sw5{background:#1f6f6b}
+  .legend .sw3{background:#c0392b;margin-left:8px}
+  .glow{position:absolute;top:10px;right:12px;display:flex;align-items:center;gap:7px;font-size:11px;font-weight:650;
+    color:var(--ink-2);background:rgba(255,255,255,.88);padding:3px 9px;border-radius:4px;border:1px solid var(--rule);z-index:2}
+  .bulb{width:13px;height:13px;border-radius:50%;background:#d8dadd;transition:background .5s,box-shadow .5s}
+  .bulb.on{background:#f2c200;box-shadow:0 0 10px 3px rgba(242,194,0,.7)}
   .legend .sw{display:inline-block;width:9px;height:9px;border-radius:50%;background:rgb(150,125,215);margin-left:6px}
   @media(max-width:900px){
     body{background:#fff}
@@ -220,14 +227,17 @@
   </div>
 
   <div class="work">
-    <figure class="thumb viz art">
-      <a href="https://eternagame.org/labs/16496126" target="_blank" rel="noopener"><img src="https://eternagame.org/sites/default/files/Nanoluc-lights-keyart-v2.1.jpg" alt="Eterna key art for the mRNA Switch Controls lab" loading="lazy"></a>
-      <figcaption>Key art: <a href="https://eternagame.org/labs/16496126" target="_blank" rel="noopener">Eterna, <em>mRNA Switch Controls</em> lab</a>.</figcaption>
+    <figure class="thumb viz">
+      <div class="mol" id="mol-mrna" role="img" aria-label="Rotating AlphaFold 3 predictions of two mRNAs: in JV11 the 3-prime element pairs with the 5-prime UTR and NanoLuc output is low; in JV13 the shuffled element stays free and output is high"></div>
+      <div class="legend"><i class="sw5"></i><span>5&prime;UTR</span><i class="sw3"></i><span>3&prime; element</span></div>
+      <div class="glow"><span class="bulb" id="mrna-bulb"></span><span id="mrna-glow">NanoLuc off</span></div>
+      <div class="state" id="mrna-state">JV11</div>
+      <figcaption>AlphaFold 3 predictions of my two constructs. All 50 designed pairs form in JV11 and none in JV13, and measured NanoLuc output drops only when they do.</figcaption>
     </figure>
     <div>
       <span class="tag live">Ongoing</span>
       <h3>Designing mRNAs that use structure to control protein output</h3>
-      <p>I engineer structure inside mRNAs to turn protein output down. A matched control shows the effect is sequence-specific, and the translation-efficiency models I tested miss it. On Eterna, <a href="https://eternagame.org/labs/16496126" target="_blank" rel="noopener"><em>mRNA Switch Controls</em></a> opens this design problem to players.</p>
+      <p>I engineer a 3&prime; element that folds back onto the 5&prime;UTR of its own mRNA, across the whole coding sequence, to turn protein output down. A length- and composition-matched control shows the effect is sequence-specific, and the translation-efficiency models I tested miss it. On Eterna, <a href="https://eternagame.org/labs/16496126" target="_blank" rel="noopener"><em>mRNA Switch Controls</em></a> opens this design problem to players.</p>
     </div>
   </div>
 
@@ -482,6 +492,33 @@
       }
       draw(); v2.zoomTo({chain:'A',hetflag:false}); v2.zoom(1.1); v2.render();
       if(!still) setInterval(function(){step=(step+1)%6; draw();},2600);
+    });
+  }
+
+  // mRNA switch: AlphaFold 3 backbone traces for JV11 (designed 3' element) and JV13 (shuffled control).
+  // Colored: 5'UTR 1-53 teal, 3' element 851-900 red. Cycles the two constructs with the NanoLuc readout.
+  var v3=makeViewer('mol-mrna');
+  if(v3){
+    fetch('mrna_switch_traces.json').then(function(r){return r.json();}).then(function(T){
+      var st=document.getElementById('mrna-state'), bulb=document.getElementById('mrna-bulb'), gl=document.getElementById('mrna-glow');
+      function seg(pts,lo,hi,color,rad){
+        var p=pts.slice(lo-1,hi).map(function(q){return {x:q[0],y:q[1],z:q[2]};});
+        if(p.length>1) v3.addCurve({points:p,radius:rad,color:color,smooth:10});
+      }
+      function draw(k){
+        v3.removeAllShapes();
+        var p=T[k];
+        seg(p,53,851,'#e4e8eb',0.55);
+        seg(p,1,53,'#1f6f6b',2.1);
+        seg(p,851,900,'#c0392b',2.1);
+        v3.zoomTo(); v3.zoom(1.4); v3.render();
+        var off=(k==='JV11');
+        if(st) st.innerHTML=off ? 'JV11 &middot; element pairs with the 5&prime;UTR' : 'JV13 &middot; same bases shuffled, element free';
+        if(bulb) bulb.className='bulb'+(off?'':' on');
+        if(gl) gl.textContent=off?'NanoLuc off':'NanoLuc on';
+      }
+      var which=0; draw('JV11');
+      if(!still) setInterval(function(){which=1-which; draw(which?'JV13':'JV11');},3600);
     });
   }
 })();
