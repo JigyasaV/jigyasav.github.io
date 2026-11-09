@@ -132,6 +132,7 @@
   .thumb figcaption a{color:var(--ink-2)}
   .legend{position:absolute;top:10px;left:12px;display:flex;align-items:center;gap:6px;font-size:11px;color:var(--ink-3);background:rgba(255,255,255,.85);padding:2px 6px;border-radius:4px;z-index:2}
   .legend .grad{display:inline-block;width:64px;height:8px;border-radius:4px;background:linear-gradient(90deg,#f8f8f8,#78aabe,#1e4b5f);border:1px solid #d5d8db}
+  .state{position:absolute;bottom:52px;right:10px;font-size:11.5px;font-weight:600;color:var(--ink-2);background:rgba(255,255,255,.9);padding:2px 8px;border-radius:4px;z-index:2;border:1px solid var(--rule)}
   .legend .sw{display:inline-block;width:9px;height:9px;border-radius:50%;background:rgb(150,125,215);margin-left:6px}
   @media(max-width:900px){
     body{background:#fff}
@@ -206,13 +207,15 @@
 
   <div class="work">
     <figure class="thumb viz">
-      <div class="mol" id="mol-pk" role="img" aria-label="Rotating 3D structure of an AI-designed RNA pseudoknot solved by cryo-EM"></div>
-      <figcaption>MPNN-fixbb designed pseudoknot. Structure: Townley, Kladwang et al., <a href="https://www.science.org/doi/10.1126/science.aeg6829" target="_blank" rel="noopener"><em>Science</em> 2026</a> (PDB <a href="https://www.rcsb.org/structure/10ZU" target="_blank" rel="noopener">10ZU</a>).</figcaption>
+      <div class="mol" id="mol-pk" role="img" aria-label="Rotating c-di-GMP-II riboswitch structure colored by FAST-MaP reactivity of three designs, without and with c-di-GMP"></div>
+      <div class="legend"><span>0</span><i class="grad"></i><span>1.5 &nbsp;2A3 reactivity</span></div>
+      <div class="state" id="pk-state">Starting sequence &middot; no c-di-GMP</div>
+      <figcaption>FAST-MaP data for three designs of a c-di-GMP-II riboswitch target, without and with ligand (orange), shown on the target structure. Data: Townley, Kladwang et al., <a href="https://www.science.org/doi/10.1126/science.aeg6829" target="_blank" rel="noopener"><em>Science</em> 2026</a>. Structure: Smith et al., <em>PNAS</em> 2011 (PDB <a href="https://www.rcsb.org/structure/3Q3Z" target="_blank" rel="noopener">3Q3Z</a>).</figcaption>
     </figure>
     <div>
       <span class="tag">Science 2026 &middot; Cover</span>
       <h3>Testing AI-designed RNAs at the bench</h3>
-      <p>Generative models design RNAs that have no natural relatives to check against. FAST-MaP data showed which AI-designed pseudoknots folded as predicted, and guided the next rounds of design.</p>
+      <p>Generative models design RNAs that have no natural relatives to check against. For a c-di-GMP riboswitch target, FAST-MaP measured whether the starting sequence, the top Eterna design and an AI design (MPNN-fixbb) change shape when the ligand binds.</p>
     </div>
   </div>
 
@@ -428,7 +431,10 @@
   function teal(resi,R){
     if(resi<21||resi>635) return 'rgb(150,125,215)';          // primer regions, no data
     var v=R[resi]; if(v===undefined) return 'rgb(235,235,235)';
-    var t=Math.max(0,Math.min(1,v/1.5));                        // same 0-1.5 scale as the figure
+    return tealv(v);
+  }
+  function tealv(v){                                            // same 0-1.5 scale as the preprint figure
+    var t=Math.max(0,Math.min(1,v/1.5));
     return t<0.5 ? mix([248,248,248],[120,170,190],t/0.5) : mix([120,170,190],[30,75,95],(t-0.5)/0.5);
   }
   function buildCage(pdb,ops){
@@ -456,15 +462,26 @@
       v1.zoomTo(); v1.zoom(1.05); v1.render();
     });
   }
-  // Science: designed pseudoknot (PDB 10ZU), rainbow 5' to 3'
+  // Science: FAST-MaP data (Townley et al. 2026) for three c-di-GMP-II riboswitch designs, -/+ ligand,
+  // shown on the target structure (PDB 3Q3Z, chain A). Cycles: design x ligand state.
   var v2=makeViewer('mol-pk');
   if(v2){
-    fetch('https://files.rcsb.org/download/10ZU.cif').then(function(r){return r.text();}).then(function(t){
-      v2.addModel(t,'cif');
-      var rs=[]; v2.selectedAtoms({}).forEach(function(a){if(rs.indexOf(a.resi)<0) rs.push(a.resi);});
-      rs.sort(function(x,y){return x-y;}); var idx={}; rs.forEach(function(r,i){idx[r]=i/Math.max(1,rs.length-1);});
-      v2.setStyle({},{cartoon:cart(function(a){return hsl2rgb((1-idx[a.resi])*250,70,52);})});
-      v2.zoomTo(); v2.zoom(1.1); v2.render();
+    Promise.all([fetch('https://files.rcsb.org/download/3Q3Z.cif').then(function(r){return r.text();}),
+                 fetch('cdigmp_fastmap.json').then(function(r){return r.json();})]).then(function(d){
+      var D=d[1], lab=document.getElementById('pk-state');
+      var designs=[['Starting','Starting sequence'],['Eterna','Eterna player design'],['MPNN-fixbb','AI design (MPNN-fixbb)']];
+      v2.addModel(d[0],'cif');
+      var step=0;
+      function draw(){
+        var di=Math.floor(step/2)%3, lig=step%2, key=designs[di][0];
+        v2.setStyle({},{});
+        v2.setStyle({chain:'A',hetflag:false},{cartoon:cart(function(a){var p=D[key][a.resi]; return p?tealv(p[lig]):'rgb(225,225,225)';})});
+        if(lig) v2.setStyle({chain:'A',resn:'C2E'},{sphere:{colorscheme:'orangeCarbon',scale:0.9}});
+        if(lab) lab.innerHTML=designs[di][1]+' &middot; '+(lig?'+ c-di-GMP':'no c-di-GMP');
+        v2.render();
+      }
+      draw(); v2.zoomTo({chain:'A',hetflag:false}); v2.zoom(1.1); v2.render();
+      if(!still) setInterval(function(){step=(step+1)%6; draw();},2600);
     });
   }
 })();
