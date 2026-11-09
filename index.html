@@ -3,12 +3,12 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Jigyasa Verma | RNA Biology &amp; Experimental Ground Truth for AI</title>
+<title>Jigyasa Verma | RNA Biology</title>
 <meta name="description" content="Jigyasa Verma is an experimentalist at Stanford who builds fast, accessible, reproducible wet-lab methods for RNA and uses them to test and improve AI models.">
 <link rel="canonical" href="https://jigyasav.github.io/">
 <meta property="og:type" content="website">
 <meta property="og:url" content="https://jigyasav.github.io/">
-<meta property="og:title" content="Jigyasa Verma | RNA Biology &amp; Experimental Ground Truth for AI">
+<meta property="og:title" content="Jigyasa Verma | RNA Biology">
 <meta property="og:description" content="Experimentalist at Stanford building fast, accessible, reproducible wet-lab methods for RNA, and using them to test and improve AI models.">
 <meta property="og:image" content="https://jigyasav.github.io/headshot.jpg">
 <meta name="twitter:card" content="summary">
@@ -23,6 +23,7 @@
   }
   *{box-sizing:border-box}
   html{scroll-behavior:smooth}
+  @media(prefers-reduced-motion:reduce){html{scroll-behavior:auto}}
   body{margin:0;background:linear-gradient(90deg,var(--side) 50%,#fff 50%);color:var(--ink);
     font-family:-apple-system,BlinkMacSystemFont,"Inter","Segoe UI",Helvetica,Arial,sans-serif;
     font-size:16px;line-height:1.65;-webkit-font-smoothing:antialiased}
@@ -51,7 +52,6 @@
   .links a:hover{border-color:var(--accent);color:var(--accent)}
   .links a.primary{background:var(--accent);color:#fff;border-color:var(--accent)}
   .links a.primary:hover{background:#17524f;color:#fff}
-  .updated{margin-top:auto;padding-top:28px;font-size:12px;color:var(--ink-3)}
 
   /* ---------- sections ---------- */
   section{padding:0 0 46px}
@@ -68,7 +68,7 @@
   .work .thumb{display:block;border:0}
   .work .thumb img{width:100%;border:1px solid var(--rule);border-radius:8px;display:block;background:#fff}
   .work h3{font-size:17px;margin:0 0 4px;letter-spacing:-.01em;font-weight:650;line-height:1.35}
-  .tag{display:inline-block;font-size:10.5px;letter-spacing:.06em;text-transform:uppercase;
+  .tag{display:inline-block;font-size:11.5px;letter-spacing:.06em;text-transform:uppercase;
     font-weight:700;padding:2px 7px;border-radius:4px;margin-bottom:7px;
     background:#f1f2f4;color:var(--ink-2)}
   .tag.live{background:var(--accent-soft);color:var(--accent)}
@@ -110,10 +110,6 @@
   .cards .work > .thumb{display:flex;justify-content:center;align-items:center;align-self:stretch;width:100%;border:0;border-bottom:1px solid var(--rule);background:#fff}
   .cards .work .thumb img{height:220px;width:100%;object-fit:contain;border:0;border-radius:0;padding:10px}
   .cards .work > div{padding:16px 18px 18px}
-  .cards .work > .thumb.ph{height:220px;flex-direction:column;align-items:center;justify-content:center;
-    background:var(--accent-soft);color:var(--accent);text-align:center}
-  .thumb.ph span{font-size:19px;font-weight:700;font-style:italic;letter-spacing:-.01em}
-  .thumb.ph small{font-size:12px;text-transform:uppercase;letter-spacing:.1em;margin-top:4px;color:var(--ink-3)}
   .pubgrid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));column-gap:32px}
   .pubgrid .pub{border-bottom:1px solid var(--rule)}
   .row{display:grid;grid-template-columns:minmax(0,1.35fr) minmax(0,1fr);gap:40px}
@@ -125,18 +121,23 @@
   /* ---------- animated card visuals ---------- */
   .cards .work > figure.thumb{margin:0;display:block;align-self:stretch;width:100%;border-bottom:1px solid var(--rule);background:#fff;position:relative}
   .mol{width:100%;height:240px;position:relative}
+  .mol::after{content:attr(data-fallback);position:absolute;inset:0;display:flex;align-items:center;justify-content:center;
+    text-align:center;padding:0 24px;font-size:13px;color:var(--ink-3);background:#fafbfa}
+  .mol.ready::after{display:none}
+  .viz .legend,.viz .glow,.viz .state{opacity:0;transition:opacity .4s}
+  .viz.ready .legend,.viz.ready .glow,.viz.ready .state{opacity:1}
   .pananim{display:block;width:100%;height:240px}
   .thumb.art img{display:block;width:100%;height:240px;object-fit:cover}
   .thumb.art a{border:0}
-  .thumb figcaption{font-size:11.5px;line-height:1.45;color:var(--ink-3);padding:6px 12px 8px;border-top:1px solid var(--rule);background:#fafbfa}
+  .thumb figcaption{font-size:12px;line-height:1.45;color:var(--ink-3);padding:6px 12px 8px;border-top:1px solid var(--rule);background:#fafbfa}
   .thumb figcaption a{color:var(--ink-2)}
-  .legend{position:absolute;top:10px;left:12px;display:flex;align-items:center;gap:6px;font-size:11px;color:var(--ink-3);background:rgba(255,255,255,.85);padding:2px 6px;border-radius:4px;z-index:2}
+  .legend{position:absolute;top:10px;left:12px;display:flex;align-items:center;gap:6px;font-size:12px;color:var(--ink-3);background:rgba(255,255,255,.85);padding:2px 6px;border-radius:4px;z-index:2}
   .legend .grad{display:inline-block;width:64px;height:8px;border-radius:4px;background:linear-gradient(90deg,#f8f8f8,#78aabe,#1e4b5f);border:1px solid #d5d8db}
-  .state{position:absolute;bottom:52px;right:10px;font-size:11.5px;font-weight:600;color:var(--ink-2);background:rgba(255,255,255,.9);padding:2px 8px;border-radius:4px;z-index:2;border:1px solid var(--rule)}
+  .state{position:absolute;bottom:10px;right:10px;font:inherit;font-size:12px;cursor:pointer;font-weight:600;color:var(--ink-2);background:rgba(255,255,255,.9);padding:2px 8px;border-radius:4px;z-index:2;border:1px solid var(--rule)}
   .legend .sw5,.legend .sw3{display:inline-block;width:14px;height:5px;border-radius:3px}
   .legend .sw5{background:#1f6f6b}
   .legend .sw3{background:#c0392b;margin-left:8px}
-  .glow{position:absolute;top:10px;right:12px;display:flex;align-items:center;gap:7px;font-size:11px;font-weight:650;
+  .glow{position:absolute;top:10px;right:12px;display:flex;align-items:center;gap:7px;font-size:12px;font-weight:650;
     color:var(--ink-2);background:rgba(255,255,255,.88);padding:3px 9px;border-radius:4px;border:1px solid var(--rule);z-index:2}
   .bulb{width:13px;height:13px;border-radius:50%;background:#d8dadd;transition:background .5s,box-shadow .5s}
   .bulb.on{background:#f2c200;box-shadow:0 0 10px 3px rgba(242,194,0,.7)}
@@ -150,8 +151,6 @@
     .sidenav{display:none !important}
     .layout{grid-template-columns:1fr}
     aside{position:static;height:auto;border-right:0;border-bottom:1px solid var(--rule);padding:32px 24px 26px}
-    .sidenav{flex-direction:row;flex-wrap:wrap;gap:14px}
-    .updated{display:none}
     main{padding:34px 24px 0;max-width:none}
   }
   @media(max-width:560px){
@@ -191,7 +190,7 @@
 <main>
 <section id="about">
   <h2>About</h2>
-  <p>I'm a postdoc with <a href="https://daslab.stanford.edu/" target="_blank" rel="noopener">Rhiju Das</a> at Stanford. I invented <a href="#research">FAST-MaP</a>, a fast way to read RNA structure. I use it to check whether AI-designed RNAs fold as predicted, and I design mRNAs that use structure to control protein output. The results go back to the models, so they can design the medicines of the future.</p>
+  <p>I'm a postdoc with <a href="https://daslab.stanford.edu/" target="_blank" rel="noopener">Rhiju Das</a> at Stanford. I invented <a href="https://www.biorxiv.org/content/10.64898/2026.09.22.753544v1" target="_blank" rel="noopener">FAST-MaP</a>, a fast way to measure RNA structure. I use it to check whether AI-designed RNAs fold as predicted, and I design mRNAs that use structure to control protein output. The data go back to the people building RNA design models.</p>
   <p>I came to RNA through cell division, studying chromosome segregation for my master's at JNCASR with <a href="https://molecularmycologylab.wixsite.com/kaustuv" target="_blank" rel="noopener">Kaustuv Sanyal</a>, and mRNA stability during mitosis for my PhD at the University of British Columbia with <a href="https://cps.med.ubc.ca/faculty/loewen/" target="_blank" rel="noopener">Christopher Loewen</a> and <a href="https://lsi.ubc.ca/people/calvin-roskelley/" target="_blank" rel="noopener">Calvin Roskelley</a>.</p>
 </section>
 
@@ -201,23 +200,23 @@
   <div class="cards">
   <div class="work">
     <figure class="thumb viz">
-      <div class="mol" id="mol-fastmap" role="img" aria-label="Rotating ROOL env-120 octameric cage colored by FAST-MaP 2A3 reactivity"></div>
+      <div class="mol" id="mol-fastmap" role="img" data-fallback="3D view of the ROOL cage colored by FAST-MaP reactivity. See Fig. 4 of the preprint below." aria-label="Rotating ROOL env-120 octameric cage colored by FAST-MaP 2A3 reactivity"></div>
       <div class="legend"><span>0</span><i class="grad"></i><span>1.5 &nbsp;2A3 reactivity</span><i class="sw"></i><span>primer region</span></div>
-      <figcaption>FAST-MaP 2A3 reactivity (bicine, custom depth) on all eight chains of the ROOL env-120 cage, as in Fig. 4b of the <a href="https://www.biorxiv.org/content/10.64898/2026.09.22.753544v1" target="_blank" rel="noopener">preprint</a>. Structure: Kretsch et al., <a href="https://doi.org/10.1038/s41586-025-09073-0" target="_blank" rel="noopener"><em>Nature</em> 2025</a> (PDB <a href="https://www.rcsb.org/structure/9MDS" target="_blank" rel="noopener">9MDS</a>).</figcaption>
+      <figcaption>FAST-MaP 2A3 reactivity (higher means more flexible) on all eight chains of the ROOL env-120 cage, as in Fig. 4b of the <a href="https://www.biorxiv.org/content/10.64898/2026.09.22.753544v1" target="_blank" rel="noopener">preprint</a>. Structure: Kretsch et al., <a href="https://doi.org/10.1038/s41586-025-09073-0" target="_blank" rel="noopener"><em>Nature</em> 2025</a> (PDB <a href="https://www.rcsb.org/structure/9MDS" target="_blank" rel="noopener">9MDS</a>).</figcaption>
     </figure>
     <div>
       <span class="tag">Preprint</span>
-      <h3>FAST-MaP: chemical mapping of RNA structures without the infrastructure</h3>
-      <p>DNA template to per-nucleotide RNA structure data in under a week, using commercial gene synthesis, Nanopore sequencing and a <a href="https://huggingface.co/spaces/daslab-stanford/cmuts" target="_blank" rel="noopener">public analysis server</a>. No sequencing core or custom code needed, and I generated the data used to validate the server's software, <a href="https://doi.org/10.5281/zenodo.22805311" target="_blank" rel="noopener">cmuts</a>.</p>
+      <h3>FAST-MaP: chemical mapping of RNA structures without a sequencing core</h3>
+      <p>DNA template to per-nucleotide RNA structure data in under a week, using commercial gene synthesis, Nanopore sequencing and a <a href="https://huggingface.co/spaces/daslab-stanford/cmuts" target="_blank" rel="noopener">public analysis server</a>. No sequencing core or custom code needed. I generated the validation data for <a href="https://doi.org/10.5281/zenodo.22805311" target="_blank" rel="noopener">cmuts</a>, the software behind the server.</p>
     </div>
   </div>
 
   <div class="work">
     <figure class="thumb viz">
-      <div class="mol" id="mol-pk" role="img" aria-label="Rotating c-di-GMP-II riboswitch structure colored by FAST-MaP reactivity of three designs, without and with c-di-GMP"></div>
+      <div class="mol" id="mol-pk" role="img" data-fallback="3D view of a c-di-GMP riboswitch colored by FAST-MaP reactivity. See the paper below." aria-label="c-di-GMP-II riboswitch colored by FAST-MaP reactivity for three designs, without and with c-di-GMP"></div>
       <div class="legend"><span>0</span><i class="grad"></i><span>1.5 &nbsp;2A3 reactivity</span></div>
-      <div class="state" id="pk-state">Starting sequence &middot; no c-di-GMP</div>
-      <figcaption>FAST-MaP data for three designs of a c-di-GMP-II riboswitch target, without and with ligand (orange), shown on the target structure. Data: Townley, Kladwang et al., <a href="https://www.science.org/doi/10.1126/science.aeg6829" target="_blank" rel="noopener"><em>Science</em> 2026</a>. Structure: Smith et al., <em>PNAS</em> 2011 (PDB <a href="https://www.rcsb.org/structure/3Q3Z" target="_blank" rel="noopener">3Q3Z</a>).</figcaption>
+      <button class="state" id="pk-state" type="button" title="Show the next design">Starting sequence &middot; no c-di-GMP</button>
+      <figcaption>FAST-MaP data for three designs of a c-di-GMP-II riboswitch target, without and with ligand (orange), shown on the target structure. Data: Townley, Kladwang et al., <a href="https://www.science.org/doi/10.1126/science.aeg6829" target="_blank" rel="noopener"><em>Science</em> 2026</a>. Structure: Smith et al., <a href="https://doi.org/10.1073/pnas.1018857108" target="_blank" rel="noopener"><em>PNAS</em> 2011</a> (PDB <a href="https://www.rcsb.org/structure/3Q3Z" target="_blank" rel="noopener">3Q3Z</a>).</figcaption>
     </figure>
     <div>
       <span class="tag">Science 2026 &middot; Cover</span>
@@ -228,11 +227,11 @@
 
   <div class="work">
     <figure class="thumb viz">
-      <div class="mol" id="mol-mrna" role="img" aria-label="Rotating AlphaFold 3 predictions of two mRNAs: in JV11 the 3-prime element pairs with the 5-prime UTR and NanoLuc output is low; in JV13 the shuffled element stays free and output is high"></div>
+      <div class="mol" id="mol-mrna" role="img" data-fallback="3D view of the designed mRNA and its shuffled control." aria-label="AlphaFold 3 predictions of a designed mRNA, where the 3-prime element pairs with the 5-prime UTR, and a shuffled control where it stays free"></div>
       <div class="legend"><i class="sw5"></i><span>5&prime;UTR</span><i class="sw3"></i><span>3&prime; element</span></div>
-      <div class="glow"><span class="bulb" id="mrna-bulb"></span><span id="mrna-glow">NanoLuc off</span></div>
-      <div class="state" id="mrna-state">JV11</div>
-      <figcaption>AlphaFold 3 predictions of my two constructs. All 50 designed pairs form in JV11 and none in JV13, and measured NanoLuc output drops only when they do.</figcaption>
+      <div class="glow"><span class="bulb" id="mrna-bulb"></span><span id="mrna-glow">NanoLuc low</span></div>
+      <button class="state" id="mrna-state" type="button" title="Show the other construct">Designed</button>
+      <figcaption>AlphaFold 3 predictions of the designed mRNA, where the 3&prime; element pairs with the 5&prime;UTR, and of a shuffled control, where it stays free. Prediction method: Abramson et al., <a href="https://doi.org/10.1038/s41586-024-07487-w" target="_blank" rel="noopener"><em>Nature</em> 2024</a>.</figcaption>
     </figure>
     <div>
       <span class="tag live">Ongoing</span>
@@ -247,7 +246,7 @@
   <rect width="640" height="300" fill="#fff"/>
   <line x1="320" y1="14" x2="320" y2="286" stroke="#e3e5e8" stroke-width="2"/>
   <text x="160" y="32" text-anchor="middle" font-size="22" font-weight="700" fill="#2f7d4a">PAN2–PAN3 active</text>
-  <text x="480" y="32" text-anchor="middle" font-size="22" font-weight="700" fill="#b23b2e">Lost or catalytic-dead</text>
+  <text x="480" y="32" text-anchor="middle" font-size="22" font-weight="700" fill="#b23b2e">Deleted or catalytically dead</text>
 
   <!-- ===== ACTIVE: mRNA + chomping deadenylase ===== -->
   <g transform="translate(0,0)">
@@ -326,7 +325,7 @@
     </figure>
     <div>
       <span class="tag">Preprint</span>
-      <h3>mRNA deadenylases keep cell division robust under microtubule stress</h3>
+      <h3>The PAN2&ndash;PAN3 deadenylase keeps cell division robust under microtubule stress</h3>
       <p>In my PhD, a genome-wide yeast screen showed the PAN2&ndash;PAN3 deadenylase is needed for mitosis under microtubule stress. It is the enzyme's activity that matters, and the role holds from yeast to human cells.</p>
     </div>
   </div>
@@ -411,41 +410,53 @@
 </div></section>
 </div></div>
 
-<footer>© 2026 Jigyasa Verma &middot; Last updated November 2026</footer>
+<footer>© 2026 Jigyasa Verma &middot; Last updated November 2026 &middot; Structures drawn with <a href="https://3dmol.csb.pitt.edu/" target="_blank" rel="noopener">3Dmol.js</a></footer>
 </main>
 
 </div>
 
-<script src="https://cdnjs.cloudflare.com/ajax/libs/3Dmol/2.5.5/3Dmol-min.js"></script>
+<script defer src="https://cdnjs.cloudflare.com/ajax/libs/3Dmol/2.5.5/3Dmol-min.js"></script>
 <script>
-(function(){
-  if(!window.$3Dmol) return;
+window.addEventListener('load', function(){
+  if(!window.$3Dmol) return;                       // fallback text stays visible
   var still = window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
-  var CART = {style:'oval', thickness:1.0, width:1.6};
+  var CART  = {style:'oval', thickness:1.0, width:1.6};
+
   function lerp(a,b,t){return Math.round(a+(b-a)*t);}
   function mix(c1,c2,t){return 'rgb('+lerp(c1[0],c2[0],t)+','+lerp(c1[1],c2[1],t)+','+lerp(c1[2],c2[2],t)+')';}
-  function hsl2rgb(h,s,l){s/=100;l/=100;var k=function(n){return (n+h/30)%12;},a=s*Math.min(l,1-l),
-    f=function(n){return l-a*Math.max(-1,Math.min(k(n)-3,Math.min(9-k(n),1)));};
-    return 'rgb('+Math.round(255*f(0))+','+Math.round(255*f(8))+','+Math.round(255*f(4))+')';}
-  function cart(colorfunc){var o={colorfunc:colorfunc}; for(var k in CART) o[k]=CART[k]; return o;}
-  function makeViewer(id){
-    var el=document.getElementById(id); if(!el) return null;
-    var v=$3Dmol.createViewer(el,{backgroundColor:'white',antialias:true});
-    if('IntersectionObserver' in window && !still){
-      new IntersectionObserver(function(es){es.forEach(function(e){v.spin(e.isIntersecting?'y':false,0.5);});}).observe(el);
-    }
-    return v;
-  }
-  // FAST-MaP: 2A3 reactivity on all eight chains of the ROOL env-120 cage (PDB 9MDS), as in Fig. 4b of the preprint.
-  // Chain A is stored once; the other seven chains are rebuilt from the cage's symmetry operators.
-  function teal(resi,R){
-    if(resi<21||resi>635) return 'rgb(150,125,215)';          // primer regions, no data
-    var v=R[resi]; if(v===undefined) return 'rgb(235,235,235)';
-    return tealv(v);
-  }
-  function tealv(v){                                            // same 0-1.5 scale as the preprint figure
+  function tealv(v){                               // 0 to 1.5 scale, as in the preprint figure
     var t=Math.max(0,Math.min(1,v/1.5));
     return t<0.5 ? mix([248,248,248],[120,170,190],t/0.5) : mix([120,170,190],[30,75,95],(t-0.5)/0.5);
+  }
+  function cart(colorfunc){var o={colorfunc:colorfunc}; for(var k in CART) o[k]=CART[k]; return o;}
+
+  // One viewer per card. nomouse keeps the page scrolling over the card.
+  // Spin and any timer run only while the card is on screen and the tab is visible.
+  function makeViewer(id){
+    var el=document.getElementById(id); if(!el) return null;
+    var v=$3Dmol.createViewer(el,{backgroundColor:'white',antialias:true,nomouse:true});
+    v.el=el; v.onScreen=false;
+    v.ready=function(){ el.classList.add('ready'); var f=el.closest('figure'); if(f) f.classList.add('ready'); };
+    if('IntersectionObserver' in window){
+      new IntersectionObserver(function(es){es.forEach(function(e){
+        v.onScreen=e.isIntersecting;
+        v.spin((e.isIntersecting && !still) ? 'y' : false, 0.5);
+      });}).observe(el);
+    } else { v.onScreen=true; if(!still) v.spin('y',0.5); }
+    return v;
+  }
+  function cycle(v,fn,ms,btn){                     // advance only when visible; button always works
+    if(btn) btn.addEventListener('click',fn);
+    if(still) return;
+    setInterval(function(){ if(v.onScreen && !document.hidden) fn(); }, ms);
+  }
+  function fail(v){ if(v && v.el) v.el.classList.remove('ready'); }   // leaves the fallback text in place
+
+  // --- FAST-MaP: 2A3 reactivity on all eight chains of the ROOL env-120 cage (PDB 9MDS), as in Fig. 4b.
+  // Chain A is stored once, one atom per residue; the other seven chains come from the cage's symmetry operators.
+  function cageColor(resi,R){
+    if(resi<21||resi>635) return 'rgb(150,125,215)';      // primer regions, no data
+    var v=R[resi]; return (v===undefined) ? 'rgb(235,235,235)' : tealv(v);
   }
   function buildCage(pdb,ops){
     var lines=pdb.split('\n').filter(function(l){return l.indexOf('ATOM')===0;}), out=[], n=0;
@@ -454,7 +465,7 @@
       lines.forEach(function(l){
         var x=+l.substr(30,8),y=+l.substr(38,8),z=+l.substr(46,8);
         var X=R[0][0]*x+R[0][1]*y+R[0][2]*z+t[0], Y=R[1][0]*x+R[1][1]*y+R[1][2]*z+t[1], Z=R[2][0]*x+R[2][1]*y+R[2][2]*z+t[2];
-        n++; out.push(l.substr(0,6)+('     '+(n%100000)).slice(-5)+l.substr(11,10)+ch+l.substr(22,8)+
+        n++; out.push(l.substr(0,6)+('     '+n).slice(-5)+l.substr(11,10)+ch+l.substr(22,8)+
           ('        '+X.toFixed(3)).slice(-8)+('        '+Y.toFixed(3)).slice(-8)+('        '+Z.toFixed(3)).slice(-8)+l.substr(54));
       });
     });
@@ -462,66 +473,73 @@
   }
   var v1=makeViewer('mol-fastmap');
   if(v1){
-    var small=window.matchMedia && window.matchMedia('(max-width:600px)').matches;
     Promise.all([fetch('rool120_chainA.pdb').then(function(r){return r.text();}),
                  fetch('rool120_2A3.json').then(function(r){return r.json();}),
                  fetch('rool120_cage_ops.json').then(function(r){return r.json();})]).then(function(d){
       var R=d[1];
-      v1.addModel(small?d[0]:buildCage(d[0],d[2]),'pdb');
-      v1.setStyle({},{sphere:{colorfunc:function(a){return teal(a.resi,R);}}});
-      v1.zoomTo(); v1.zoom(1.05); v1.render();
-    });
-  }
-  // Science: FAST-MaP data (Townley et al. 2026) for three c-di-GMP-II riboswitch designs, -/+ ligand,
-  // shown on the target structure (PDB 3Q3Z, chain A). Cycles: design x ligand state.
-  var v2=makeViewer('mol-pk');
-  if(v2){
-    Promise.all([fetch('https://files.rcsb.org/download/3Q3Z.cif').then(function(r){return r.text();}),
-                 fetch('cdigmp_fastmap.json').then(function(r){return r.json();})]).then(function(d){
-      var D=d[1], lab=document.getElementById('pk-state');
-      var designs=[['Starting','Starting sequence'],['Eterna','Eterna player design'],['MPNN-fixbb','AI design (MPNN-fixbb)']];
-      v2.addModel(d[0],'cif');
-      var step=0;
-      function draw(){
-        var di=Math.floor(step/2)%3, lig=step%2, key=designs[di][0];
-        v2.setStyle({},{});
-        v2.setStyle({chain:'A',hetflag:false},{cartoon:cart(function(a){var p=D[key][a.resi]; return p?tealv(p[lig]):'rgb(225,225,225)';})});
-        if(lig) v2.setStyle({chain:'A',resn:'C2E'},{sphere:{colorscheme:'orangeCarbon',scale:0.9}});
-        if(lab) lab.innerHTML=designs[di][1]+' &middot; '+(lig?'+ c-di-GMP':'no c-di-GMP');
-        v2.render();
-      }
-      draw(); v2.zoomTo({chain:'A',hetflag:false}); v2.zoom(1.1); v2.render();
-      if(!still) setInterval(function(){step=(step+1)%6; draw();},2600);
-    });
+      v1.addModel(buildCage(d[0],d[2]),'pdb');
+      v1.setStyle({},{sphere:{radius:2.6,colorfunc:function(a){return cageColor(a.resi,R);}}});
+      v1.zoomTo(); v1.zoom(1.05); v1.render(); v1.ready();
+    }).catch(function(){fail(v1);});
   }
 
-  // mRNA switch: AlphaFold 3 backbone traces for JV11 (designed 3' element) and JV13 (shuffled control).
-  // Colored: 5'UTR 1-53 teal, 3' element 851-900 red. Cycles the two constructs with the NanoLuc readout.
+  // --- Science: FAST-MaP data (Townley et al. 2026) for three designs of a c-di-GMP-II riboswitch target,
+  // without and with ligand, drawn on the target structure (PDB 3Q3Z chain A, one atom per residue).
+  var v2=makeViewer('mol-pk');
+  if(v2){
+    Promise.all([fetch('cdigmp_structure.json').then(function(r){return r.json();}),
+                 fetch('cdigmp_fastmap.json').then(function(r){return r.json();})]).then(function(d){
+      var S=d[0], D=d[1], btn=document.getElementById('pk-state'), step=0;
+      var designs=[['Starting','Starting sequence'],['Eterna','Eterna player design'],['MPNN-fixbb','AI design (MPNN-fixbb)']];
+      function draw(){
+        var di=Math.floor(step/2)%3, lig=step%2, key=designs[di][0];
+        v2.removeAllShapes();
+        for(var i=0;i<S.xyz.length-1;i++){
+          var p=D[key][S.resi[i]];
+          v2.addCylinder({start:{x:S.xyz[i][0],y:S.xyz[i][1],z:S.xyz[i][2]},
+                          end:{x:S.xyz[i+1][0],y:S.xyz[i+1][1],z:S.xyz[i+1][2]},
+                          radius:1.7,fromCap:2,toCap:2,color:p?tealv(p[lig]):'rgb(225,225,225)'});
+        }
+        if(lig) S.lig.forEach(function(q){ v2.addSphere({center:{x:q[0],y:q[1],z:q[2]},radius:1.1,color:'#e08a1e'}); });
+        if(btn) btn.innerHTML=designs[di][1]+' &middot; '+(lig?'+ c-di-GMP':'no c-di-GMP');
+        v2.render();
+      }
+      draw(); v2.zoomTo(); v2.zoom(1.05); v2.render(); v2.ready();
+      cycle(v2,function(){step=(step+1)%6; draw();},2800,btn);
+    }).catch(function(){fail(v2);});
+  }
+
+  // --- mRNA switch: AlphaFold 3 backbone traces. 5'UTR 1-53 teal, 3' element 851-900 red.
   var v3=makeViewer('mol-mrna');
   if(v3){
     fetch('mrna_switch_traces.json').then(function(r){return r.json();}).then(function(T){
-      var st=document.getElementById('mrna-state'), bulb=document.getElementById('mrna-bulb'), gl=document.getElementById('mrna-glow');
-      function seg(pts,lo,hi,color,rad){
-        var p=pts.slice(lo-1,hi).map(function(q){return {x:q[0],y:q[1],z:q[2]};});
-        if(p.length>1) v3.addCurve({points:p,radius:rad,color:color,smooth:10});
+      var btn=document.getElementById('mrna-state'), bulb=document.getElementById('mrna-bulb'),
+          gl=document.getElementById('mrna-glow'), which=0, shapes={};
+      function curves(k){
+        var p=T[k], parts=[[53,851,'#e4e8eb',0.55],[1,53,'#1f6f6b',2.1],[851,900,'#c0392b',2.1]];
+        return parts.map(function(q){
+          return {points:p.slice(q[0]-1,q[1]).map(function(z){return {x:z[0],y:z[1],z:z[2]};}),
+                  radius:q[3],color:q[2],smooth:10};
+        });
       }
-      function draw(k){
+      function draw(){
+        var k = which ? 'JV13' : 'JV11', designed = !which;
+        if(!shapes[k]) shapes[k]=curves(k);
         v3.removeAllShapes();
-        var p=T[k];
-        seg(p,53,851,'#e4e8eb',0.55);
-        seg(p,1,53,'#1f6f6b',2.1);
-        seg(p,851,900,'#c0392b',2.1);
+        shapes[k].forEach(function(c){ v3.addCurve(c); });
         v3.zoomTo(); v3.zoom(1.4); v3.render();
-        var off=(k==='JV11');
-        if(st) st.innerHTML=off ? 'JV11 &middot; element pairs with the 5&prime;UTR' : 'JV13 &middot; same bases shuffled, element free';
-        if(bulb) bulb.className='bulb'+(off?'':' on');
-        if(gl) gl.textContent=off?'NanoLuc off':'NanoLuc on';
+        if(btn) btn.innerHTML = designed ? 'Designed &middot; element pairs with the 5&prime;UTR' : 'Shuffled control &middot; element stays free';
+        if(bulb) bulb.className='bulb'+(designed?'':' on');
+        if(gl) gl.textContent = designed ? 'NanoLuc low' : 'NanoLuc high';
       }
-      var which=0; draw('JV11');
-      if(!still) setInterval(function(){which=1-which; draw(which?'JV13':'JV11');},3600);
-    });
+      draw(); v3.ready();
+      cycle(v3,function(){which=1-which; draw();},3600,btn);
+    }).catch(function(){fail(v3);});
   }
-})();
+
+  // --- PAN2-PAN3 SVG: respect reduced motion
+  if(still){ var svg=document.querySelector('svg.pananim'); if(svg && svg.pauseAnimations) svg.pauseAnimations(); }
+});
 </script>
 </body>
 </html>
