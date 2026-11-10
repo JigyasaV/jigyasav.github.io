@@ -5,7 +5,7 @@
 % License: MIT
 %------------------------
 % General-purpose CV — not tailored to a specific posting.
-% Last updated: September 2026
+% Last updated: November 2026
 %------------------------
 
 \documentclass[letterpaper,11pt]{article}
@@ -48,7 +48,7 @@
 \renewcommand{\footrulewidth}{0pt}
 
 % Margins: standard resume page (geometry overrides fullpage)
-\usepackage[letterpaper,top=0.8in,bottom=0.8in,left=0.7in,right=0.7in]{geometry}
+\usepackage[letterpaper,top=0.6in,bottom=0.6in,left=0.7in,right=0.7in]{geometry}
 
 \urlstyle{same}
 
@@ -57,13 +57,13 @@
 \setlength{\tabcolsep}{0in}
 
 % ---- Breathing room ----
-\linespread{1.06}
+\linespread{1.0}
 \setlength{\parskip}{2pt}
-\setlist[itemize]{itemsep=3.5pt, parsep=0pt, topsep=4pt}
+\setlist[itemize]{itemsep=2.5pt, parsep=0pt, topsep=4pt}
 
 % Sections formatting
 \titleformat{\section}{
-  \vspace{6pt}\scshape\raggedright\large
+  \vspace{2pt}\scshape\raggedright\large
 }{}{0em}{}[\color{black}\titlerule \vspace{2pt}]
 
 % Ensure that generated PDF is machine readable/ATS parsable
@@ -116,7 +116,6 @@
 %----------HEADING----------
 \begin{center}
     \textbf{\Huge \scshape Jigyasa Verma} \\ \vspace{3pt}
-    {\small RNA Biology $\cdot$ Method Development $\cdot$ Experimental Ground Truth for AI Models} \\ \vspace{3pt}
 
     \href{mailto:jigyasav@stanford.edu}{Email} $|$
     \href{https://orcid.org/0000-0002-9286-0299}{ORCID} $|$
@@ -129,9 +128,7 @@
 
 %-----------PROFILE-----------
 \section*{Summary}
-I'm an experimentalist who builds wet-lab methods that generate data quickly, accessibly, and reproducibly to test and improve AI models. RNA structure and function is my specialty, and I work across \textit{in vitro}, microbial, and mammalian systems, from molecular biology and biochemistry to imaging and high-throughput assays.
-
-I run experiments as a closed loop. I give a model a real design problem, build and measure its best candidates at the bench, and feed the results back into the next round, which is also how I find where models break. I invented FAST-MaP to make RNA structure data fast and accessible to any lab, and I now design mRNAs that use structure to control how much protein they make. My goal is to help models design the biomolecules and medicines of the future.
+I'm an experimentalist who builds wet-lab methods that generate data quickly, accessibly, and reproducibly, and I use that data to check whether AI-designed molecules behave as predicted. I have moved across yeast genetics, mammalian cell biology, and RNA biochemistry, picking up each new system quickly and working closely with computational and Eterna design teams whose molecules I test. I ran robotic genome-wide screens and set up automated live-cell imaging on my own, and I build protocols that others can run: I invented FAST-MaP, wrote it up as an invited step-by-step protocol, and transferred it to AI@HHMI. Turning expert science into procedures that others can execute reliably is the work I most enjoy, and automated labs are where I want to take it next.
 
 %-----------EXPERIENCE-----------
 \section{Research Experience}
@@ -141,44 +138,44 @@ I run experiments as a closed loop. I give a model a real design problem, build 
     {Postdoctoral Researcher}{Mar 2025 -- Present}
     {Stanford University, Das Lab}{California, USA}
     \resumeItemListStart
-        \resumeItem{\textbf{Invented FAST-MaP}, a rapid, primer-less RNA chemical-mapping pipeline that takes a DNA template to per-nucleotide reactivity in under a week ($\sim$25--30 h hands-on). It runs entirely on commercial gene-synthesis and Nanopore sequencing services with a public \href{https://huggingface.co/spaces/daslab-stanford/cmuts}{web-based analysis server}, requiring no in-house NGS infrastructure and no custom bioinformatics. This makes quantitative RNA structure questions answerable in any lab worldwide (in review).}
-        \resumeItem{\textbf{Tested AI-designed RNAs with FAST-MaP} (\textit{Science}, 2026): my method generated the chemical-mapping data showing how the starting sequence, the top Eterna design and an AI (MPNN-fixbb) design of a c-di-GMP riboswitch change shape when the ligand binds.}
-        \resumeItem{\textbf{Designed tunable mRNA constructs} that repress cap-dependent translation through an engineered long-range interaction within the transcript, with strong, sequence-specific repression by NanoLuc reporter assay in HeLa relative to a length- and composition-matched specificity control. None of the translation-efficiency models I tested predict the effect.}
-        \resumeItem{\textbf{Designed and launched \textit{mRNA Switch Controls}}, an \href{https://eternagame.org/labs/16496126}{Eterna} crowdsourcing lab that turns my tunable mRNA construct into an open design challenge: players design 50-nt 3$'$ elements that fold back over the start codon of a NanoLuc reporter to switch translation off or on. The pilot round is complete, and the selected designs are now in experimental validation.}
-        \resumeItem{\textbf{Validated \href{https://doi.org/10.5281/zenodo.22805311}{\texttt{cmuts}}}, a mutational-profiling pipeline scaling structure profiling beyond the transcriptome, using \textit{in vitro} chemical probing (2A3, DMS).}
+        \resumeItem{\textbf{Invented FAST-MaP, wrote it up as an invited step-by-step protocol, and transferred it to AI@HHMI}; the primer-less sequencing pipeline takes a DNA template to per-nucleotide RNA reactivity in about one week ($\sim$24--30 h hands-on) using commercial gene synthesis and Nanopore sequencing services, standard bench equipment, and the public \href{https://huggingface.co/spaces/daslab-stanford/cmuts}{\texttt{cmuts} web server}, with no in-house sequencing or coding.}
+        \resumeItem{\textbf{Designed a 50-nt anti-5$'$UTR in the 3$'$UTR} to pair with the 5$'$UTR of the same mRNA, which represses cap-dependent NanoLuc translation in HeLa lysate while a scrambled control does not (unpublished).}
+        \resumeItem{\textbf{Designed and launched \textit{mRNA Switch Controls}}, an \href{https://eternagame.org/labs/16496126}{Eterna} crowdsourcing lab in which players design 50-nt anti-5$'$UTR sequences in the 3$'$UTR to switch NanoLuc translation off or on; selected pilot-round designs are in validation.}
+        \resumeItem{\textbf{Invented the method (FAST-MaP) that generated chemical-mapping data for a deep-learning RNA design study}, showing how the starting sequence, the top Eterna design, and an AI (MPNN-fixbb) design of a c-di-GMP riboswitch change shape when the ligand binds (\textit{Science}, 2026).}
     \resumeItemListEnd
 
     \resumeSubheading
       {Postdoctoral Researcher}{Jan 2024 -- Aug 2024}
       {University of British Columbia, Loewen and Roskelley Labs}{Vancouver, Canada}
       \resumeItemListStart
-        \resumeItem{\textbf{Built reproducible quantitative image-analysis pipelines} (segmentation, feature extraction, statistics) for high-throughput cellular phenotyping, turning noisy microscopy into structured, analysis-ready metrics for quantitative comparison across conditions.}
+        \resumeItem{\textbf{Performed quantitative image analysis} of microscopy data for cellular phenotyping.}
       \resumeItemListEnd
 
     \resumeSubheading
       {Graduate Research Assistant}{Sep 2017 -- Dec 2023}
       {University of British Columbia, Loewen and Roskelley Labs}{Vancouver, Canada}
       \resumeItemListStart
-        \resumeItem{\textbf{Discovered a conserved role for the PAN deadenylase complex} in maintaining mitotic robustness under microtubule stress, integrating genome-wide genetic screens ($\sim$4,800 strains across two conditions), RNA-seq, live-cell imaging, and siRNA/shRNA knockdown of PAN2 in HEK293A cells to test conservation from yeast to human (in review).}
-        \resumeItem{\textbf{Established that Pho85-dependent phosphorylation of Pan3} links cell-cycle signaling to mRNA turnover, applying extensive molecular cloning, mutagenesis, and plasmid construction.}
-        \resumeItem{\textbf{Trained and mentored undergraduate researchers} in cloning, yeast genetics, and imaging, supervising their day-to-day experiments.}
+        \resumeItem{\textbf{Ran genome-wide chemical-genetic and \textit{pan2}$\Delta$ synthetic genetic array screens} ($\sim$4,800 strains under nocodazole, 1536-colony format on a Singer RoToR, scored in Balony), which, with live-cell imaging of yeast and PAN2 shRNA knockdown in HEK293A cells, showed that PAN2--PAN3 deadenylase activity is required for mitotic robustness under microtubule stress from yeast to human (first author, in review).}
+        \resumeItem{\textbf{Validated screen and RNA-seq hits with liquid growth assays, RT-qPCR, and genetic analysis}, which showed that catalytic-dead Pan2 (D1020A) fails to rescue nocodazole sensitivity, human PAN2 rescues only when Pan3 is present, and \textit{CLB1} and \textit{CLN3} shift in the direction RNA-seq predicted.}
+        \resumeItem{\textbf{Independently set up automated live-cell imaging on the Zeiss Celldiscoverer 7}, teaching myself the instrument and building the 96-well workflow behind the yeast time-lapse data in the PAN2 manuscript.}
       \resumeItemListEnd
 
     \resumeSubheading
       {Graduate Student Researcher}{Aug 2014 -- May 2017}
       {Jawaharlal Nehru Centre for Advanced Scientific Research}{Bangalore, India}
       \resumeItemListStart
-        \resumeItem{\textbf{Identified a role for the autophagy protein Atg11} in chromosome-segregation fidelity using growth-based genetic screens, high-throughput imaging, and transcriptional assays in budding yeast (\textit{PLOS Biology}, 2025).}
+        \resumeItem{\textbf{Screened \textit{atg} deletion mutants and imaged mitotic spindles}, which showed that \textit{atg11}$\Delta$ is sensitive to the microtubule drugs thiabendazole and benomyl and has shorter spindles than wild type (co-second author, \textit{PLOS Biology}, 2025).}
       \resumeItemListEnd
   \resumeSubHeadingListEnd
 
+  \newpage
   %-----------Publications-----------
 \section{Publications}
 \begin{itemize}[leftmargin=0.15in, label={}]
     \small{
     \item \textbf{[Published]} Townley J.*, Kladwang W.*, \dots\ \textbf{Verma J.}, \dots\ Eterna Participants, Das R. De novo design of RNA pseudoknots with deep learning. \href{https://www.science.org/doi/10.1126/science.aeg6829}{\textit{Science}} (2026). *equal contribution
-    \item \textbf{[Published]} Reza M.H., Aggarwal R.*, \textbf{Verma J.}* et al. Atg11 is required for high-fidelity chromosome segregation. \href{https://doi.org/10.1371/journal.pbio.3003069}{\textit{PLOS Biology}} (2025). *equal contribution
-    \item \textbf{[In review]} \textbf{Verma J.} et al. FAST-MaP: A Rapid and Accessible Protocol for Chemical Mapping of RNA Structures Using Primer-less Sequencing. Invited protocol; under review, 2026. \href{https://www.biorxiv.org/content/10.64898/2026.09.22.753544v1}{Preprint}
+    \item \textbf{[Published]} Reza M.H., Aggarwal R.*, \textbf{Verma J.}* et al. Autophagy-related protein Atg11 is essential for microtubule-mediated chromosome segregation. \href{https://doi.org/10.1371/journal.pbio.3003069}{\textit{PLOS Biology}} (2025). *equal contribution
+    \item \textbf{[In review]} \textbf{Verma J.} et al. FAST-MaP: Chemical Mapping of RNA Structures Using Primer-less Sequencing. Invited protocol; under review, 2026. \href{https://www.biorxiv.org/content/10.64898/2026.09.22.753544v1}{Preprint}
     \item \textbf{[In review]} \textbf{Verma J.} et al. PAN2--PAN3 deadenylase activity is selectively required for mitotic robustness under microtubule stress. Under review, 2026. \href{https://www.biorxiv.org/content/10.1101/2024.05.01.591760v3}{Preprint}
 }
 \end{itemize}
@@ -187,13 +184,10 @@ I run experiments as a closed loop. I give a model a real design problem, build 
 \section{Technical Expertise}
 \begin{itemize}[leftmargin=0.15in, label={}]
   \small{
-    \item \textbf{AI \& ML Model Evaluation}{: RNA structure-prediction models (EternaFold, RibonanzaNet, RNAfold); RNA foundation models (AIDO.RNA, CodonBERT); mRNA translation-efficiency models (Optimus 5-Prime, RiboNN, UTR-LM); mRNA stability and ribosome-profiling models (Saluki, RiboTIE); benchmarking model predictions against experimental ground truth}
-    \item \textbf{Method Development}{: FAST-MaP (inventor; public web server; Stanford OTL invention disclosure under review); assay design; probe/reagent optimization}
-    \item \textbf{Computational Analysis}{: Python (pandas, NumPy, SciPy, matplotlib, scikit-image); R/Bioconductor; SHAPE data analysis (ShapeMapper2, \texttt{cmuts}); biological databases (UniProt, GenBank, RNAcentral, Rfam, Ensembl, PDB, NCBI BLAST, GEO/SRA); reproducible analysis pipelines on \href{https://github.com/JigyasaV}{GitHub}}
-    \item \textbf{RNA Biology \& Structure Probing}{: \textit{in vitro} and \textit{in vivo} chemical probing (2A3, DMS); IVT; mRNA translation-efficiency assays; biophysical RNA characterization (mass photometry, dynamic light scattering); RT-qPCR}
-    \item \textbf{Molecular \& Cellular Biology}{: CRISPR/Cas9; shRNA/siRNA; cloning; mutagenesis; flow cytometry; mammalian cell culture (HEK293A and other immortalized cell lines); yeast genetics and SGA screens}
-    \item \textbf{Sequencing \& Library Prep}{: Illumina sequencing and library preparation; Oxford Nanopore long-read RNA sequencing; RNA-seq (mammalian and microbial)}
-    \item \textbf{Imaging \& Microscopy}{: confocal microscopy; live-cell and time-lapse imaging; high-content screening; quantitative image analysis (ImageJ, ZEN)}
+    \item \textbf{Lab Automation \& Instrumentation:}{ Singer RoToR robotic pinning with Balony colony scoring (genome-wide chemical-genetic and SGA screens); Zeiss Celldiscoverer 7 automated live-cell imaging (yeast, 96-well)}
+    \item \textbf{RNA Biology \& Structure Probing:}{ \textit{in vitro} chemical probing (2A3, DMS) with mutational-profiling readout; \textit{in vitro} transcription; mRNA construct design and NanoLuc translation reporter assays (HeLa lysate); sample preparation for commercial Nanopore sequencing; RNA and DNA QC (Qubit, agarose gels); RT-qPCR}
+    \item \textbf{Molecular \& Cellular Biology:}{ cloning and site-directed mutagenesis; shRNA knockdown (lipofectamine transfection); western blot; MTT viability assays; HEK293A culture; yeast genetics (PCR-based genomic modification, SGA mating and selection, spot and growth assays)}
+    \item \textbf{Imaging \& Analysis:}{ live-cell time-lapse microscopy; quantitative image analysis (Fiji; custom Python segmentation pipelines built with AI coding assistants); chemical-mapping analysis (\texttt{cmuts})}
   }
 \end{itemize}
 
@@ -201,11 +195,10 @@ I run experiments as a closed loop. I give a model a real design problem, build 
 \section{Awards}
   \begin{itemize}[leftmargin=0.15in, label={}]
     \small{
-     \item \textbf{mRNA Research Advancement Award}, CELLSCRIPT\texttrademark{} (2026)
+     \item \textbf{mRNA Research Advancement Award}, CELLSCRIPT (2026)
      \item \textbf{mRNA Innovators Award}, Eclipsebio (2025)
      \item \textbf{President's Academic Excellence Initiative PhD Award}, University of British Columbia (2021--2023)
      \item \textbf{Raymond A. Pederson Prize in Physiology}, University of British Columbia (2020)
-     \item \textbf{Junior Research Fellowship (CSIR-NET)}, Government of India (2017)
    }
    \end{itemize}
 
@@ -213,9 +206,9 @@ I run experiments as a closed loop. I give a model a real design problem, build 
 \section{Teaching and Service}
 \begin{itemize}[leftmargin=0.15in, label={}]
   \small{
-    \item \textbf{Peer Reviewer:} \textit{Science} (AAAS), 2025; \textit{Nature Communications} (Nature Portfolio), 2025 and 2026; \textit{Nature Nanotechnology} (Nature Portfolio), 2025; \textit{Chemistry -- A European Journal} (Wiley), 2026
-    \item \textbf{Selected Presentations:} FAST-MaP, Stanford RNA Medicine Symposium (poster, 2026); FAST-MaP, Stanford Biochemistry Conference, Santa Cruz (poster, 2026); Salk Cell Cycle Meeting, San Diego (talk, 2023); Gordon Research Conference on Centromeres in Health \& Disease, Vermont (talk, 2022)
-    \item \textbf{Mentorship:} trained and supervised undergraduate and junior researchers in RNA biochemistry, cloning, and imaging
+    \item \textbf{Peer Reviewer:} \textit{Science}, \textit{Nature Communications}, \textit{Nature Nanotechnology}, \textit{Chemistry -- A European Journal} (2025--2026)
+    \item \textbf{Selected Presentations:} Stanford RNA Medicine Symposium (poster, 2026); Stanford Biochemistry Retreat (poster, 2026); Salk Cell Cycle Meeting (talk, 2023); Gordon Research Conference on Centromeres in Health \& Disease (talk, 2022)
+    \item \textbf{Mentorship:} trained undergraduates and junior researchers in RNA biochemistry, cloning, and imaging
   }
 \end{itemize}
 
@@ -223,14 +216,11 @@ I run experiments as a closed loop. I give a model a real design problem, build 
 \section{Education}
 \begin{itemize}[leftmargin=0.15in, label={}]
   \small{
-    \item \textbf{University of British Columbia} \hfill Vancouver, Canada \\
-    PhD, Cell and Developmental Biology \hfill 2017--2023
+    \item \textbf{PhD}, Cell and Developmental Biology, University of British Columbia, Vancouver \hfill 2017--2023
 
-    \item \textbf{Jawaharlal Nehru Centre for Advanced Scientific Research} \hfill Bangalore, India \\
-    MS, Molecular Biology and Genetics \hfill 2014--2017
+    \item \textbf{MS}, Molecular Biology and Genetics, JNCASR, Bangalore \hfill 2014--2017
 
-    \item \textbf{University of Delhi} \hfill Delhi, India \\
-    BSc, Microbiology \hfill 2011--2014
+    \item \textbf{BSc}, Microbiology, University of Delhi \hfill 2011--2014
   }
 \end{itemize}
 
